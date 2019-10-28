@@ -9,22 +9,39 @@ This is a series of check points (in the form of questions) that you can use to 
 ## 1 Introduction
 
 * What is a tentative definition of Artificial Intelligence?
-* 
+
+  > 
+
 * What are the classic and modern paradigms of Artificial Intelligence?
+
 * What are the main features of Computational Intelligence algorithms?
+
 * What are the main approaches for global and local optimization?
+
 * What are the main difficulties that can be met in optimization problems?
+
 * What is a metaheuristic?
+
 * What is the main idea of the No Free Lunch Theorem?
+
 * What are the 4 pillars of evolution?
+
 * What is phenotype and genotype?
+
 * What’s the difference between Darwinian and Lamarckian evolution?
+
 * What is the fitness landscape?
+
 * What are the similarities and differences between natural and Artificial Evolution?
+
 * What are the key elements of Evolutionary Algorithms?
+
 * Why and how do Evolutionary Algorithms work?
+
 * What are the main principles of Swarm Intelligence?
+
 * Can you mention some natural examples of emergent behavior?
+
 * What are the main principles and challenges of (computational) Swarm Intelligence?* What are Reynolds’ flocking rules? 
 
 ## 2 Evolutionary Algorithms I 
