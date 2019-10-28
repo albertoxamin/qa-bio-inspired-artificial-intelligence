@@ -9,6 +9,7 @@ This is a series of check points (in the form of questions) that you can use to 
 ## 1 Introduction
 
 * What is a tentative definition of Artificial Intelligence?
+* 
 * What are the classic and modern paradigms of Artificial Intelligence?
 * What are the main features of Computational Intelligence algorithms?
 * What are the main approaches for global and local optimization?
