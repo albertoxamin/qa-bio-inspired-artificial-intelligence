@@ -49,7 +49,7 @@ This is a series of check points (in the form of questions) that you can use to 
 
 * What is the fitness landscape?
 
-  > 
+  > In evolutionary biology, fitness landscapes or adaptive landscapes are used to visualize the relationship between genotypes and reproductive success. It is assumed that every genotype has a well-defined replication rate. This fitness is the "height" of the landscape. Genotypes which are similar are said to be "close" to each other, while those that are very different are "far" from each other. The set of all possible genotypes, their degree of similarity, and their related fitness values is then called a fitness landscape.
 
 * What are the similarities and differences between natural and Artificial Evolution?
 
@@ -63,10 +63,10 @@ This is a series of check points (in the form of questions) that you can use to 
   >
   > **Differences:**
   >
-  > * Fitness is a measure of how good a solution is, not the number of offspring
-  > * Selection is based on fitness, not on competition and interactions
-  > * Generations are not overlapping, parents and offspring don't exist at the same time
-  > * We expect an improvement between the initial and final solution, natural evolution is not an optimization process
+  > * Fitness is a measure of how good a solution is, **not** the number of offspring
+  > * Selection is based on fitness, **not** on competition and interactions
+  > * Generations are not overlapping, parents and offspring **don't** exist at the same time
+  > * We expect an improvement between the initial and final solution, **natural evolution is not an optimization process**
 
 * What are the key elements of Evolutionary Algorithms?
 
@@ -111,22 +111,70 @@ This is a series of check points (in the form of questions) that you can use to 
 ## 2 Evolutionary Algorithms I 
 
 * What are the main steps of an EA generation cycle?
+
+  >1. Find a genetic representation 
+  >2. Build a population
+  >3. Design a fitness function
+  >4. Choose selection method
+  >5. Choose replacement method
+  >6. Choose crossover and mutation
+  >7. Choose data analysis method
+  >8. Repeat until:
+  >   * a maxium fitness value is found
+  >   * a solution is good enough
+  >   * a time limit
+  >   * a certain convergence condition is met
+
 * What is a discrete representation?
+
+  > A discrete representation is our way of storing the genotype which can be mapped into different phenotypes depending on the optimization problem
+
 * How can you represent a real value with a binary representation?
+
+  > With the [IEE754](https://en.wikipedia.org/wiki/IEEE_754) or others, it depends on the precision we want
+
 * How can you represent a sequence with a discrete representation?
+
+  > By using the gene position to identify an object of the sequence and the value as value
+
 * What are real-valued representations and when may be used?
+
+  > The genotype is sequences of real values that represent the problem parameters.
+  > Used when high precision parameter optimization is required 
+
 * What are tree-based representations?
+
+  > The genotype describes a tree with branching points and terminals.
+
 * What are the main methods to create the initial population in EAs?
+
+  > First we should have a sufficiently large population to cover the search space, but also small for evaluation.
+  > Then we create each individual from an uniform sample of the search space.
+
 * How does fitness-proportionate selection work?
+
+  > The probability that an individual makes an offspring is proportional to how good his fitness is wrt the population fitness. This biases the selection towards the most fit indivials. 
+
 * When does fitness-proportionate selection fail and why?
+
+  > The fitness must be positive, with uniform fitness values it becomes random selection, with few high fitness individuals the low fitness ones have almost zero chance of reproducing.
+
 * How does rank-based selection work?
+
 * How does truncated rank-based selection work?
+
 * How does tournament selection work?
+
 * What is elitism?
+
 * How does crossover work for different representations?
+
 * How does mutation works for different representations?
+
 * How can you monitor the performance of an evolutionary algorithm?
+
 * Why is it important to monitor diversity?
+
 * What’s the main idea of the schemata theory? 
 
 ## 3 Evolutionary Algorithms II 
