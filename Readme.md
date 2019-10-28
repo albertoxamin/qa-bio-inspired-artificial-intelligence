@@ -10,29 +10,67 @@ This is a series of check points (in the form of questions) that you can use to 
 
 * What is a tentative definition of Artificial Intelligence?
 
-  > 
+  > The ability to perform a choice from a set of options in order to achieve a certain objective
 
 * What are the classic and modern paradigms of Artificial Intelligence?
 
+  > The goal was to achieve human cognition, now the goal is to possibly go beyond human capabilities 
+
 * What are the main features of Computational Intelligence algorithms?
+
+  > Learn or adapt to new situations, generalise, abstract, discover, associate
 
 * What are the main approaches for global and local optimization?
 
+  >For **local** optimization we have gradient based methods (Gradient descent, Newton methods, Quasi-Newton methods) and heuristic methods (Rosenbrock, Nelder-Mead, Hooke-Jeeves, etc.)
+  >For **global** optimization we can have unimodal or multimodal functions and we have 2 approaches: Deterministic and Stochastic
+
 * What are the main difficulties that can be met in optimization problems?
+
+  > High non-linearities, high multimodality, noisy object function, approximated object function
 
 * What is a metaheuristic?
 
+  > A metaheuristic is an algorithm that doesn't require any assumption on the objective function. In short any stochastic optimization algorith.
+
 * What is the main idea of the No Free Lunch Theorem?
+
+  > Every problem shoud be solved with a proper algorithm that is tailored arounds its features. 
 
 * What are the 4 pillars of evolution?
 
+  > **Population**, **Diversity** (through mutation), **Heredity**, **Selection**
+
 * What is phenotype and genotype?
+
+  > **Genotype** is the genetic material of the organism, is transmitted during reproduction and the mutation and the crossover affect it.
+  > **Phenotype** is the manifestation of an organism, affected by the enviroment, development, selection operates on it.
 
 * What’s the difference between Darwinian and Lamarckian evolution?
 
+  > **Lamark**: all acquired characteristics are transmitted to the offspring
+  > **Darwin**: only useful variations are transferred, survival of the fittest
+
 * What is the fitness landscape?
 
+  > 
+
 * What are the similarities and differences between natural and Artificial Evolution?
+
+  > **Similarities:**
+  >
+  > * *Individual*: a candidate solution for a given problem: phenotype+genotype
+  > * *Population*: a set of individuals
+  > * *Diversity*: A measure of how individuals in a population differ
+  > * *Selection*: A mechanism to select which individuals survive and reproduce
+  > * *Inheritance*: A mechanism to partly transmit the properties of a solution to another individual.
+  >
+  > **Differences:**
+  >
+  > * Fitness is a measure of how good a solution is, not the number of offspring
+  > * Selection is based on fitness, not on competition and interactions
+  > * Generations are not overlapping, parents and offspring don't exist at the same time
+  > * We expect an improvement between the initial and final solution, natural evolution is not an optimization process
 
 * What are the key elements of Evolutionary Algorithms?
 
