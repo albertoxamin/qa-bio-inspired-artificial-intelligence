@@ -161,23 +161,60 @@ This is a series of check points (in the form of questions) that you can use to 
 
 * How does rank-based selection work?
 
+  > Individuals are sorted on their fitness value. The index on the list is the rank. Selection pressure wrt fitness proportionate selection `p(i)=1-r(i)/∑r`
+
 * How does truncated rank-based selection work?
+
+  >Only the best **x** individuals are allowed to make offsprings and each of them makes the same number of offsprings: **N/x** where N is the population size.  
 
 * How does tournament selection work?
 
+  > For every offspring to be generated:
+  >
+  > 1. Pick randomly k individuals from the population, where k is the tournament size (< N)
+  > 2. Choose the individual with the highest fitness and make a copy
+  > 3. Put all individuals back in the population
+
 * What is elitism?
+
+  > Mantain the best *n* individuals from previous generation to prevent loss of best individuals by effects of mutation or sub-optimal fitness evaluation
 
 * How does crossover work for different representations?
 
+  > * One point: decide an index where to spli the genome
+  > * Unimform: for each value randomly choose on of the two parents
+  > * Arithmetic: arithmetic average of the two genomes
+  > * Sequences: create a new sequence with some elements in the same order of the parent
+  > * Trees: Cut and paste
+
 * How does mutation works for different representations?
+
+  > * Binary: random mutate some bits
+  > * Real valued: increase or decrease some elements
+  > * Sequence: randomly swap elements
+  > * Trees: randomly change
 
 * How can you monitor the performance of an evolutionary algorithm?
 
+  > * By tracking the bes/worst population average fitness of each generation
+  > * Multiple runs are necessary 
+  > * Fitness graphs are meaningful only if the fitness function doesn't change over time, these plots can be used to detect if the algorithm stagnated or coverged.
+
 * Why is it important to monitor diversity?
 
-* What’s the main idea of the schemata theory? 
+  > Diversity tells where there is potential for further evolution.
 
-## 3 Evolutionary Algorithms II 
+* What’s the main idea of the schemata theory?
+
+  > **DEF**: a schema is a set of individuals with some common genes.
+  >
+  > **DEF**: The order of a schema is the number of common genes
+  >
+  > **DEF**: The defining length of a schema is the longest between two defined positions, including the initial one
+  >
+  > **Building Block Hypothesis**: a GA seeks near optimal performance through the closeness of short, low order, high performance schemata called the building blocks 
+
+## 3 Evolutionary Algorithms II
 
 * What is the advantage of using an adaptive mutation step-size in Evolution Strategies?
 * What are the three self-adaptive mutation strategies used in Evolution Strategies?
