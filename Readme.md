@@ -227,6 +227,8 @@ This is a series of check points (in the form of questions) that you can use to 
 * What is it useful to use correlated mutations in Evolution Strategies?
 * How can the pairwise dependency between n variables be represented? 
 * What’s the difference between (μ, λ)-ES and (μ + λ)-ES?
+
+  > 
 * What are the main advantages of CMA-ES?
 * What are the deterministic and stochastic selection schemes in Evolutionary Programming?
 * What are the main operators of Differential Evolution?
@@ -303,11 +305,31 @@ This is a series of check points (in the form of questions) that you can use to 
 ## 5 Constrained Evolutionary Algorithms 
 
 * What kind of constraints can an optimization problem have?
+
+  > **Hard-constraints** which set conditions that are requred to be satisfied and **soft-constraints** which have some variables values that are penalised in the objective function.
 * What does it mean for a solution to be infeasible?
+
+  > That some hard-constraints are not satisfied.
 * What are the main kinds of penalty functions that can be used in EAs?
+
+  > * Death Penalty: when a solution violates a constraint it is rejected
+  > * Static Penalty: the penalty functions remains constant during the evolution process
+  > * Dynamic Penalty: the penalty function changes depending on the generation
+  > * Adaptive penalty: the penalty function takes a feedback from the search process
 * What are the main issues of penalty-based approaches?
+
+  > * The penalty factors are highly problem dependent.
+  > * If the penalty is too high or low the optimization process may not be efficient
 * How does ASCHEA work?
+
+  > It has 3 main components:
+  >
+  > * An adaptive penalty function
+  > * A recombination operator guided by the constraints, that mixes an infeasable solution with a feasible one
+  > * A "Segregational selection operator": Aims to define the ratio of feasible solutions in the next population
 * How does stochastic ranking work?
+
+  > 
 * How does constraint domination (Pareto ranking) work?
 * How can the notion of Pareto-dominance be adapted to problems with constraints?
 * What’s the rationale behind repair mechanisms?
@@ -336,19 +358,54 @@ This is a series of check points (in the form of questions) that you can use to 
 ## 7 Swarm Intelligence II 
 
 * What is stigmergy?
+
+  > Agents can communicate through changes in the enviroment.
 * How is stigmergy used by ants?
+
+  > Ants leave a pheromone trail, ants follow the path with the highest pheromone concentration, in absence of pheromone random path.
 * What are the main principles of Ant Colony Optimization?
+
+  > Assumes an optimization problem represented as a graph.
+  > We build solutions at runtime.
+  >
+  > There are two rules, the transition rule and the pheromone update rule.
+  >
+  > When an ant steps on a node leaves pheromones that evaporate over time.
 * What kind of problems can Ant Colony Optimization solve? Why?
+
+  >Combinatorial problems over networks and any TSP problem
 * How does the transition rule used in ACO work?
+
+  > It is used to encourage the choice of edges with high pheromone levels and short distances.
 * What’s the influence of the transition rule’s parameters α and β?
+
+  > ɑ decides how much the ants will be looking for pheromones, β defines how important is the distance of the nodes.
 * How does the classic pheromone update rule used in ACO work?
+
+  > The pheromone on an edge linearly decreases with time, but is increased by the transition of all ants on that edge.
 * How do the local/global pheromone update rules used in ACO work?
+
+  > Local: The pheromone level of each edge visited by an ant is decreased by a fraction of its current level and increased by a fraction of the initial level.
+  >
+  > Global: Whel all ants have completed their paths, the length of the shortest path is found and only the pheromone levels of 
 * How can you apply Ant Colony Optimization for shortest-path problems and TSP?
+
+  > 
 * Can you mention some of the main variants of ACO?
+
+  > 
 * What are the main steps of Continuous Ant Colony Optimization?
+
+  > 
 * What are the two main methods for Multi-Objective Ant Colony Optimization?
+
+  > 
 * How does the multi-pheromone approach work?
+
+  > 
 * How does the multi-colony approach work? 
+
+  > 
 
 ## 8 Neuro-evolution 
 
