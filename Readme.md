@@ -337,7 +337,7 @@ This is a series of check points (in the form of questions) that you can use to 
 * What’s the main idea of the Ensemble of Constraint-Handling Techniques?
 * What’s the main idea of Viability Evolution? 
 
-## 6 Swarm Intelligence I 
+## 6 Swarm Intelligence I
 
 * What is the biological inspiration of Particle Swarm Optimization?
 * What are the three strategies adopted by birds in a flock?
@@ -385,21 +385,40 @@ This is a series of check points (in the form of questions) that you can use to 
   > The pheromone on an edge linearly decreases with time, but is increased by the transition of all ants on that edge.
 * How do the local/global pheromone update rules used in ACO work?
 
-  > Local: The pheromone level of each edge visited by an ant is decreased by a fraction of its current level and increased by a fraction of the initial level.
+  > Local: The pheromone level of each edge visited by an ant is decreased by a fraction of its current level and increased by a fraction of the initial level.
   >
-  > Global: Whel all ants have completed their paths, the length of the shortest path is found and only the pheromone levels of 
+  > Global: Whel all ants have completed their paths, the length of the shortest path is found and only the pheromone levels of the shortest path are updated.
 * How can you apply Ant Colony Optimization for shortest-path problems and TSP?
 
-  > 
-* Can you mention some of the main variants of ACO?
+  > * Distribute m ants on random nodes
+  > * Initial pheromone levels are equal for all edges and inversely proportional to the number of nodes times the estimated length of the optimal path.
+* Can you mention some of the main variants of ACO?
 
-  > 
+  > Ant Colony Systems (ACS), Max-Min AS (MMAS), Elitist Pheromone Updates, Fast Ant System (FANT), Antabu, AS-Rank
 * What are the main steps of Continuous Ant Colony Optimization?
 
+  > CACO performs a bi-level search: local (exploit good regions) and global (explore bad regions) 
+  >
+  > ```pseudocode
+  > Create n_r regisons and set tau_i(0)=1, i=1,...,n_r
+  > repeat
+  > 	Evaluate fitness, f(x_i), of each region
+  > 	Sort regions in descending order of fitness
+  > 	send 90% of n_g global ants for mutation
+  > 	send 10% of n_g global ants for trail diffusion
+  > 	update pheromone and age of n_g weak regions
+  > 	do loacl search to exploit good region
+  > until stopping condition is true
+  > return region x_i with the best fitness as solution
+  > ```
+  >
   > 
 * What are the two main methods for Multi-Objective Ant Colony Optimization?
 
-  > 
+  > Multi-pheromone approach with one pheromone for each objective
+  >
+  > Multi-colony approach with one colony for each objective
+
 * How does the multi-pheromone approach work?
 
   > 
