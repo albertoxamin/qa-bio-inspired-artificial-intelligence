@@ -217,7 +217,13 @@ This is a series of check points (in the form of questions) that you can use to 
 ## 3 Evolutionary Algorithms II
 
 * What is the advantage of using an adaptive mutation step-size in Evolution Strategies?
+
+  > It allows us to have a more explorative behaviour at the beginning in order to ignore local optimums, and to have a more exploitative behaviour at the end.
 * What are the three self-adaptive mutation strategies used in Evolution Strategies?
+
+  > * Uncorrelate mutations with one mutation step size `(x1,…,xn,σ)`
+  > * Uncorrelated mutations with multiple step size `(x1,…,xn,σ1,…,σn)`
+  > * Correlated mutations individuals are represented as `(x1,…,xn,σ1,…,σn,ɑ1,…,ɑn)`
 * What is it useful to use correlated mutations in Evolution Strategies?
 * How can the pairwise dependency between n variables be represented? 
 * What’s the difference between (μ, λ)-ES and (μ + λ)-ES?
@@ -233,18 +239,66 @@ This is a series of check points (in the form of questions) that you can use to 
 ## 4 Multi-Objective Evolutionary Algorithms 
 
 * Can you mention some examples of Multi-Objective Optimization problems?
+
+  > Buying a car: comfort vs price
+  > Engineering design: lighness vs strength
+  
 * What are some of the drawbacks of combining criteria into a single fitness function?
+
+  > To find different tradeoff solutions we must re-optimise the weights.
+  
 * How does lexicographic ordering work?
+
+  > The objectives are ranked in a user-defined order of importance, so we optimise each objective, restricting every time.
+
 * How does the ε-constraint method work?
+
+  > There are k single objective optimization problems that are solved separately, imposing for every problem k-1contraints that correspond to the other problems.
+
 * What does it mean for one solution to Pareto-dominate another solution?
+
+  > A solution *i* is said to "Pareto-dominate" a solution *j* if *i* is **not worse** than *j* on every objectives, **AND** if *i* is **better** than *j* **on at least one objective**.
+
 * What is the Pareto-optimal front?
+
+  > A pareto-optimal front is **a set** that contains **all** the **solutions that are not dominated** by any other.
+
 * What’s the difference between local and global Pareto front?
+
+  > The global pareto front is the pareto-optimal front in all the fitness function, a local pareto front is the optimal in a subset of the fitness function.
+
 * Why is it useful to find a Pareto-optimal front?
+
+  > When the decision about a problem are made after the optimization.
+
 * What’s the difference between a priori and a posteriori Multi-Objective Optimization?
+
+  > In "a priori" methods the decisions about a problem are before the optimisation, whereas in "a posteriori" methods the decisions are made after the optimisation.
+
 * What are the important aspects to take into account for Multi-Objective EAs?
+
+  > * Fitness assignments, by means of:
+  >   * Weighted sum, the weights are adapted during evolution
+  >   * Separate evaluation of each objective by a subset of the population
+  >   * Pareto-dominance
+  > * Diversity preservation
+  >   * Fitness sharing
+  >   * Crowding distance sorting
+  > * Memory of all the non-dominated points 
+  >   * an archive of non-dominated points (to expand the current population)
+  >   * elitist selection
+
 * How does VEGA work?
+
+  > First it evaluates each solution for every objective function separately, then for each objective selects the best N/k individuals and puts the bests into a single final population
+
 * What is the “Pareto rank” that is used in NSGA-II, and how is it used?
+
+  > Solutions can be ranked according to their level of dominance: non dominated solutions have rank 1, then we get rank 2... recursively
+
 * What is the “crowding distance” that is computed in NSGA-II, and how is used? 
+
+  > It is used as a diversity preservation mechanism
 
 ## 5 Constrained Evolutionary Algorithms 
 
