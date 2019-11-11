@@ -727,6 +727,8 @@ A CPPN is similar to a neural network, but acts as indirect encoding for other o
 
 #### What is HyperNEAT? How does it differ from NEAT?
 
+Hyperneat uses CPPNs to encode neural networks and by compactly encoding connectivity patterns, HyperNEAT has been demonstrated to successfully evolve neural networks of several million connections 
+
 #### What’s the main idea of Compressed Network Search?
 
 ## 9 Swarm and Evolutionary Robotics
