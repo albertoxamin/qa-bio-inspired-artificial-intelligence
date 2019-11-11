@@ -2,6 +2,33 @@
 
 This is a series of check points (in the form of questions) that you can use to check if you understood the main points of each lecture.
 
+- [Table of Contents](#check-points-bio-inspired-artificial-intelligence)
+  * [1 Introduction](#1-introduction)
+    
+  * [2 Evolutionary Algorithms I](#2-evolutionary-algorithms-i)
+    
+  * [3 Evolutionary Algorithms II](#3-evolutionary-algorithms-ii)
+    
+  * [4 Multi-Objective Evolutionary Algorithms](#4-multi-objective-evolutionary-algorithms)
+    
+  * [5 Constrained Evolutionary Algorithms](#5-constrained-evolutionary-algorithms)
+    
+  * [6 Swarm Intelligence I](#6-swarm-intelligence-i)
+
+  * [7 Swarm Intelligence II](#7-swarm-intelligence-ii)
+
+  * [8 Neuro-evolution](#8-neuro-evolution)
+
+  * [9 Swarm and Evolutionary Robotics](#9-swarm-and-evolutionary-robotics)
+
+  * [10 Competitive and Cooperative Co-Evolution](#10-competitive-and-cooperative-co-evolution)
+
+  * [11 Genetic Programming](#11-genetic-programming)
+
+  * [12 Applications & Recent Trends](#12-applications---recent-trends)
+
+
+
 ## 1 Introduction
 
 #### What is a tentative definition of Artificial Intelligence?
