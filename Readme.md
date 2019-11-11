@@ -329,23 +329,55 @@ This is a series of check points (in the form of questions) that you can use to 
   > * A "Segregational selection operator": Aims to define the ratio of feasible solutions in the next population
 * How does stochastic ranking work?
 
-  > 
+  > It consists of multi-membered Evolution strategies that use a penalty function and a selection based on a ranking process. It tries to balance the influence of the objective function and the penalty function when assigning fitness to a solution. It doesn't requre the definition of a penalty factor
 * How does constraint domination (Pareto ranking) work?
 * How can the notion of Pareto-dominance be adapted to problems with constraints?
 * What’s the rationale behind repair mechanisms?
+
+  > It is an approach to turn unfeasible solutoins into feasible ones.
+  > This can be done through greedy algorithms, random or custom herustics.
 * How can repaired solutions be used?
+
+  > Repaired solutions can be used for firness evaluation only or to replace the corrisponding unfeasible solutions in the population (always or with some propbability).
 * What’s the main idea of the Ensemble of Constraint-Handling Techniques?
-* What’s the main idea of Viability Evolution? 
+
+  > To have several constraint handling techniques, each with its own popultaion and parameters. Each population produces its offspring and evaluates them. However, the offspring compete with all the offsprings from all the populations. This aims to automate the selection of the best constraint-handling technique for a certain problem (no free lunch theorem)
+* What’s the main idea of Viability Evolution?
+
+  > Progressively shrinking the boundaries of unfeasible solutions.
 
 ## 6 Swarm Intelligence I
 
 * What is the biological inspiration of Particle Swarm Optimization?
+
+  > A flock of birds that wants to find the area with the highest concentration of food. Birds don't know where the area is, but each bird can tell its neighbors how many insects are at its location, also each birds remenbers its own location where it found the highest concetration of food so far.
 * What are the three strategies adopted by birds in a flock?
+
+  > 1. Brave: keep flying in the same direction
+  > 2. Conservative: fly back towards the best position
+  > 3. Swarm: move towards the best neighbor
 * How can a “particle” be defined and what kind of information does it have?
+
+  > A particle can be defined as position, velocity and performance and it has perception on the performance of neighbors, the best particle among its neighbors and its position, its best position.
 * What are the main neighborhood levels and social structures that can be used in PSO?
+
+  > Global neighborhood, distance based neighborood, list based neighborhood, ring, star, von-neumann,pyramid, clusters, wheel...
 * What’s the idea behind growing neighborhoods?
+
+  > Start with a ring topology with least connectivity, then grow towards a star topology. Particles are added to the neighborhood according to a scaled euclidiean distance smaller than an increading radius.
 * What are the main steps of (standard) Particle Swarm Optimization?
+
+  > * Each particle is initialized with random position and velocity
+  > * At each step, each particle updates first the velocity: $$v'=w*v+\phi_1U_1\cdot(y-x)+\phi_2U_2\cdot(z-x)$$, where **x** is the current position and **v** the current velocity. **y** and **z** are the personal and social best position. **w** is inertia $$\phi_1$$ and $$\phi_2$$ are the cognitive and social coefficients. U1 and U2 are uniform random numbers
+  > * Then each particles updates its position: $x'=x+v'$
+  > * In case of improvement update y and z
+  > * Do all the above until a stopping criteria is met.
 * What are the velocity component and velocity models in PSO?
+
+  > **Components:**
+  >
+  > * Inertia velocity: w*v
+  > * Cognitive velocity: $$
 * What is the effect of the acceleration coefficient parametrization?
 * What are the similarities and differences between EAs and PSO?
 * Can you mention some examples of dynamic inertia rules?
