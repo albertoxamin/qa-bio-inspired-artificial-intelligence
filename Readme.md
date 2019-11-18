@@ -735,21 +735,48 @@ Hyperneat uses CPPNs to encode neural networks and by compactly encoding connect
 
 #### What are the goals of Swarm Robotics?
 
+To design multi-agent robotic systems characterized by:
+
+* robustness
+* scalability
+* Versatility/flexibility 
+* low cost
+
 #### Can you mention some examples of tasks solved by Swarm Intelligence in nature?
+
+Passing a gap, nest building, grouped fall, plugging potholes in a trail
 
 #### Can you describe some examples of Swarm Robotics applications?
 
+Coordinated exploration, transportation and clustering, physical cooperation, reconfigurable robots
+
 #### What are reconfigurable robots and what are their main kinds?
+
+Modular robots, composed of several components, which can be re-organized to create morphologies suitable for different tasks. There are four types of reconfigurable robots: Chan-type, Lattice-Type, Hybrid type (chain+lattice), Other types
 
 #### What are the motivations behind Evolutionary Robotics?
 
+Since it's difficult to design autonomous systems using a top-down engineering process it's better to let the engineer define the control components and the selection criteria, and let the artificial evolution  discover the most suitable combinations while the robot interacts with the enviroment.
+
+Can be used as a synthetic approach to the study of mechanism of adaptive behaviour.
+
 #### How is it possible to design a fitness function for evolving collision-free navigation?
+
+Fitness=V\*∂v\*(1-s)
 
 #### How is it possible to design a fitness function for evolving homing for battery charge?
 
+Fitness=V\*(1-s)
+
 #### How is it possible to design a fitness function for evolving autonomous car driving?
 
+The fitness is the percentage of covered distance d in r races on m circuits.
+
+$$F=\frac{1}{R*M}\sum^R\sum^M D_{r,m}$$
+
 #### Can you think of other examples of Evolutionary Robotics applications?
+
+
 
 ## 10 Competitive and Cooperative Co-Evolution
 
