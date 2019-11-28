@@ -270,8 +270,9 @@ With a covariance matrix
 #### What are the main parameters of Differential Evolution? 
 #### What’s the difference between exponential and binomial crossover used in DE?
 #### Why and how does Differential Evolution?
+
 #### What are the differences between classic Evolutionary Algorithms and EDAs?
-#### How does PBIL work? 
+#### How does PBIL work?
 
 ## 4 Multi-Objective Evolutionary Algorithms 
 
@@ -782,27 +783,59 @@ $$F=\frac{1}{R*M}\sum^R\sum^M D_{r,m}$$
 
 #### What is competitive co-evolution?
 
+Competitive co-evolution is a situation where 2 different species co-evolve against each other.
+
+The fitness of each species depends on the fitness of the opponenet species.
+
+A continously changing fitness landscape.
+
 #### What is the difference between formal and computational models of competitive co-evolution?
 
 #### How can you apply competitive co-evolution to evolve sorting algorithms?
 
+A population of unsorted lists (algorithm generating unsorted lists), a population of sorting programs. 
+
+`f(sorting) = quality`
+
+`f(testing) = 1 - quality`
+
 #### What is the recycling problem and how can it be limited?
+
+When the same set of solutions are discovered over and over across generations. It can be limited by adding a generational memory, increasing possibility for variation or bigger genetic diversity.
 
 #### What is the problem of dynamic fitness landscape?
 
+The fitness function is no longer an indicator of progress.
+
 #### Does competitive co-evolution lead to progress?
+
+
 
 #### How can you measure co-evolutionary progress with CIAO graphs?
 
+**C**urrent **I**ndividual vs. **A**ncestral **O**pponent across generations. Ideal continuous progress would be indicated by lower diagonal portion in black and upper diagonal portion in white.
+
 #### How can you measure co-evolutionary progress with Master Tournaments?
+
+Plot the average outcome of tournaments of the current individual against all previous best opponents. Ideal continuous progress would be indicated by continuous growth. 
 
 #### What is the Hall of Fame and why is it useful?
 
+Tries to introduce generation memory, but at each generation we test each new individual against all best opponents obtained so far (it is sufficient to test only against a limited sample frandomly extracted from the hall of fame).
+
 #### How is it possible to evolve a robotic prey-predator scenario?
+
+
 
 #### What’s the difference between inter-species and intra-species cooperation?
 
+**Inter-species:** two species co-evolve such that one species provides benefit to another, but not necessarily both ways.
+
+**Intra-species:** Individuals within a species co-evolve to provide benefit to other individuals in the same species, not necessarily both ways.
+
 #### What are the two main kinds of cooperation?
+
+Simple (reciprocal) and Altruistic. Simple consist if the helping gets an advantage, this is easy to implement. Altruistic cooperation is harder to evolve.
 
 #### Can you mention some examples of cooperation observed in nature?
 
