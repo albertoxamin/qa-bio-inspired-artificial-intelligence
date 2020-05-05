@@ -54,11 +54,11 @@ High non-linearities, high multimodality, noisy object function, approximated ob
 
 #### What is a metaheuristic?
 
-A metaheuristic is an algorithm that doesn't require any assumption on the objective function. In short any stochastic optimization algorith.
+A metaheuristic is an algorithm that doesn't require any assumption on the objective function. In short any stochastic optimization algorithm.
 
 #### What is the main idea of the No Free Lunch Theorem?
 
-Every problem shoud be solved with a proper algorithm that is tailored arounds its features. 
+Every problem should be solved with a proper algorithm that is tailored arounds its features. 
 
 #### What are the 4 pillars of evolution?
 
@@ -147,7 +147,7 @@ Swarm intelligence is a the propery of a system where the collective behaviour o
   6. Choose crossover and mutation
   7. Choose data analysis method
   8. Repeat until:
-     * a maxium fitness value is found
+     * a maximum fitness value is found
      * a solution is good enough
      * a time limit
      * a certain convergence condition is met
@@ -180,7 +180,7 @@ Then we create each individual from an uniform sample of the search space.
 
 #### How does fitness-proportionate selection work?
 
-The probability that an individual makes an offspring is proportional to how good his fitness is wrt the population fitness. This biases the selection towards the most fit indivials. 
+The probability that an individual makes an offspring is proportional to how good his fitness is wrt the population fitness. This biases the selection towards the most fit individual. 
 
 #### When does fitness-proportionate selection fail and why?
 
@@ -204,12 +204,12 @@ For every offspring to be generated:
 
 #### What is elitism?
 
-Mantain the best *n* individuals from previous generation to prevent loss of best individuals by effects of mutation or sub-optimal fitness evaluation
+Maintain the best *n* individuals from previous generation to prevent loss of best individuals by effects of mutation or sub-optimal fitness evaluation
 
 #### How does crossover work for different representations?
 
-* One point: decide an index where to spli the genome
-* Unimform: for each value randomly choose on of the two parents
+* One point: decide an index where to split the genome
+* Uniform: for each value randomly choose on of the two parents
 * Arithmetic: arithmetic average of the two genomes
 * Sequences: create a new sequence with some elements in the same order of the parent
 * Trees: Cut and paste
@@ -223,9 +223,9 @@ Mantain the best *n* individuals from previous generation to prevent loss of bes
 
 #### How can you monitor the performance of an evolutionary algorithm?
 
-* By tracking the bes/worst population average fitness of each generation
+* By tracking the best/worst population average fitness of each generation
 * Multiple runs are necessary 
-* Fitness graphs are meaningful only if the fitness function doesn't change over time, these plots can be used to detect if the algorithm stagnated or coverged.
+* Fitness graphs are meaningful only if the fitness function doesn't change over time, these plots can be used to detect if the algorithm stagnated or converged.
 
 #### Why is it important to monitor diversity?
 
@@ -245,16 +245,16 @@ Diversity tells where there is potential for further evolution.
 
 #### What is the advantage of using an adaptive mutation step-size in Evolution Strategies?
 
-It allows us to have a more explorative behaviour at the beginning in order to ignore local optimums, and to have a more exploitative behaviour at the end.
+It allows us to have a more explorative behavior at the beginning in order to ignore local optimums, and to have a more exploitative behavior at the end.
 #### What are the three self-adaptive mutation strategies used in Evolution Strategies?
 
-* Uncorrelate mutations with one mutation step size `(x1,…,xn,σ)`
+* Uncorrelated mutations with one mutation step size `(x1,…,xn,σ)`
 * Uncorrelated mutations with multiple step size `(x1,…,xn,σ1,…,σn)`
 * Correlated mutations individuals are represented as `(x1,…,xn,σ1,…,σn,ɑ1,…,ɑn)`
 
 #### Why is it useful to use correlated mutations in Evolution Strategies?
 
-
+It allows us to follow the optimum even when the fitness landscape is skewed. 
 
 #### How can the pairwise dependency between n variables be represented?
 
@@ -262,17 +262,63 @@ With a covariance matrix
 
 #### What’s the difference between (μ, λ)-ES and (μ + λ)-ES?
 
- 
+ They are both deterministic rank-based selection methods
+
+* μ indicates the number of parents
+* λ is the number of offspring produced
+* (μ, λ) selects the best μ individuals from λ offspring
+* (μ+λ) selects the best μ individuals from both μ parents and λ offspring
 
 #### What are the main advantages of CMA-ES?
+
+During the search it gathers information on unsuccessful mutations thus builds an evolution path. 
+
+This evolution path is used to adapt both the step size by shrinking or amplifying it for successful mutations and the covariance matrix by rotating and adjusting it to adapt to the fitness landscape.
+
 #### What are the deterministic and stochastic selection schemes in Evolutionary Programming?
+
+* Deterministic traditional
+  * μ parents and μ offspring are taken into account and sorted on fitness.
+  * the best μ solutions are selected for the next generation
+* stochastic modern
+  * μ parents and μ offspring are taken into account and sorted on fitness
+  * each solution is evaluated against *q* randomly chosen from  the parents and offspring, and we keep count of the number of "wins" as relative fitness
+  * The relative fitness is used for selecting the next generation
+
 #### What are the main operators of Differential Evolution?
+
+?
+
 #### What are the main parameters of Differential Evolution? 
+
+Population size, Scale Factor (aka differential weight), Crossover probability
+
 #### What’s the difference between exponential and binomial crossover used in DE?
-#### Why and how does Differential Evolution?
+
+* binomial follows a binomial distribution, avg of swapped genes = 1 + CR*n
+* exponential follows a geometric dist. avg = (1-CR^n)/(1-CR)
+
+#### Why and how does Differential Evolution work?
+
+At the beginning, the solutions are spread out, with a large **S**cale **F**actor allows for large search moments. (EXPLORATIVE BEGINNING)
+
+At the end of the optimization, the solutions should be focused in an area of the decision space, allowing for refinements. (EXPLOITATIVE ENDING)
+
+TLDR: Progressively shrinking randomized movements guide the search towards the optimum.
 
 #### What are the differences between classic Evolutionary Algorithms and EDAs?
+
+In EDAs we don't evolve solutions, but **a single** probabilistic model of the population.
+
 #### How does PBIL work?
+
+Genes are represented as real values in the range [0,1] indicating the prob. that any allele appears in that gene
+
+1. A population is generated from the probability vector
+2. The fitness of each member is evaluated and ranked
+3. Update population genotype based on fittest individual
+4. mutate
+5. repeat
 
 ## 4 Multi-Objective Evolutionary Algorithms 
 
