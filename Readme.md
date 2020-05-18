@@ -485,9 +485,9 @@ Start with a ring topology with least connectivity, then grow towards a star top
 ɸ1= cognitive ɸ2 = social
 
 * ɸ1=ɸ2=0 then the particles moves only based on its inertia
-* ɸ10, ɸ2=0 cognition only model
-* ɸ1=0, ɸ20 social only model
-* ɸ1=ɸ20 particles are attraccted towards the average of personal and social best
+* ɸ1>0, ɸ2=0 cognition only model
+* ɸ1=0, ɸ2>0 social only model
+* ɸ1=ɸ2>0 particles are attraccted towards the average of personal and social best
 * ɸ1<ɸ2 better for unimodal
 * ɸ1ɸ2 better for multimodal
 * low ɸ1 and ɸ2 smoother trajectories
@@ -503,15 +503,50 @@ Start with a ring topology with least connectivity, then grow towards a star top
 
 #### Can you mention some examples of dynamic inertia rules?
 
+Dynamic inertia, w changes with time. W is problem dependent. w≥1 velocity increases over time more explorarion. 0<w<1 decelerate more expoitation.
+
+* Random sampling from gaussian
+
 #### What is velocity clamping and why is it needed?
+
+In velocity clamping, a Vmax is defined and has the effect of controlling the global exploration of particles, it doesn't confine positions, but step sizes.
+
+It is also possible to adaptively change Vmax if the global best doesn't improve over a cartain number of iterations. 
 
 #### What is the main idea of Multi-Start PSO?
 
+To increase diversity it continually injects randomness in the particles positions, however may also lead to neer reaching equilibrium.
+
 #### What’s the main idea of Comprehensive Learning Particle Swarm Optimization?
+
+A more efficient version of PSO.
+
+Changes to the perturabtion logic 
+
+![image-20200507123154209](image-20200507123154209.png)
+
+```tex
+v_i^{k+1}=w v_i^k + \phi U\big(x_{lb-f}^k-x_i^k\big)
+```
+
+The **functional local best** is a solution composed of design variables taken from multiple particle personal bests selected according to this:
+
+* For each j-th design var, a random number is generated and compare with a threshold
+  * if it's higher, then it's copied from the personal best of the i-th particle
+  * If it's lower, then two particles (≠i) are randomly selected from the swarm and the best of the two is copied
 
 #### What’s the main idea of Cooperatively Coevolving Particle Swarms?
 
-#### Can you mention some hybrid variants of PSO? 
+Randomly divide the proble into n separate sub-problems, doesn't use velocity update but samples solutions from different distributions.
+
+Advantages:
+
+* Instead of solving one large dimensional problem, several smaller problems are solved.
+* Fitness is evaluated after each part of the context vector is updated, allowing for a finer-grained search.
+
+#### Can you mention some hybrid variants of PSO?
+
+
 
 ## 7 Swarm Intelligence II 
 
@@ -588,20 +623,49 @@ Multi-colony approach with one colony for each objective
 
 #### How does the multi-pheromone approach work?
 
+A pheromone and an herustic matrix are used fore each objective.
 
+![image-20200507183951987](image-20200507183951987.png)
 
-#### How does the multi-colony approach work? 
+Pheromones update rules:
 
+* Only ants that generated non dominated solutions can update both pheromone matrixes 
+  * These ants deposit 1/np the quantity of pheromone, where np is the number of 🐜 that generated non-dominated solutions
+* All non dominated solutions are stored in an archive 
 
+#### How does the multi-colony approach work?
+
+N colonies = N objectives
+
+Needs a sharing mechanism across colonies, each colony implements ACS on one of the objectives. Pheromones colonies are different.
+
+The sharing mechanism is applied before the pheromone updates
+
+* Local sharing
+  * Applied after each next node is added to the solution
+  * Rank all partial solutions in non dominance classes (NSGA2)
+  * Normalized Euclidean distance between solution vectors
+* Fitness sharing
+  * <img src="image-20200508134510263.png" alt="image-20200508134510263" style="zoom: 67%;" />
+* Niching
+  * foreach solution, using the sharing values a niche count is calculated
+* Global sharing
+  * Applied after all paths have been constructed
+  * Rank solutions using non dominated sorting
+    * Find all non-dom solutions
+    * Add them to the current front
+    * Remove these individuals
+    * Advance to the next front and repeat
+  * $f_{ij}$ calculated as for local sharing 
 
 
 ## 8 Neuro-evolution 
 
 #### What are the advantages of nervous systems?
 
-Selective transimmions of signals across distant areas which results in more complex bodies
+Selective transmissions of signals across distant areas which results in more complex bodies
 
-Complex adaptation that results in survival inside changing enviroments 
+Complex adaptation that results in survival inside changing environments 
 
 #### What are the two main neuron communication models?
 
@@ -609,7 +673,7 @@ Spiking neurons and McCulloch-Pitts
 
 #### What is firing time and firing rate?
 
-Firing time is used in spiking neurons, firing rate (signal strength) is the base of mcculloch
+Firing time is used in spiking neurons, firing rate (signal strength) is the base of  McCulloch
 
 #### What are main elements of the McCulloch-Pitts model?
 
@@ -632,7 +696,7 @@ In Feed-Forward Neural Networks (**FFNN**) information flows one way only
 * Perceptron: input and output nodes only, no hidden learning
 * Multi-Layer Perceptron (MLP): when there are one ore more hidden layers
 
-In Recurrent Neural Networs information flows both ways, "enables" the memory capability
+In Recurrent Neural Networks information flows both ways, "enables" the memory capability
 
 #### Why is linear separability important and how is it handled by Neural Networks?
 
@@ -648,11 +712,11 @@ MLP can solve problems that are not linearly separable.
 
 Pattern recognition, content generation, regression, classification, black box control systems
 
-Applications: Self driving cars, network efficiency, cybersecurity, amrketing, fin-tech
+Applications: Self driving cars, network efficiency, cybersecurity, marketing, fin-tech
 
 #### What is learning in an artificial neural network?
 
-The netork adjusts the weights to achieve a desired output, there are 2 types of learning supervised learning, unsupervised learning and reinforment learning. 
+The network adjusts the weights to achieve a desired output, there are 2 types of learning supervised learning, unsupervised learning and reinforcement learning. 
 
 #### What is supervised learning?
 
@@ -660,13 +724,15 @@ Correct outputs are known, the goal is to minimize the error, usually with *back
 
 #### What is unsupervised learning?
 
-The correct outputs aren't known, the goal is to find the correlations in data or compress data or feature extraction, usually with hebbian learning
+The correct outputs aren't known, the goal is to find the correlations in data or compress data or feature extraction, usually with Hebbian learning
 
 #### What is reinforcement learning?
 
 The correct outputs aren't known the goal is to discover a mapping from states to actions
 
 #### What is an error function?
+
+It is a function that describes how far the classified points are from their true value.
 
 #### How is possible to prevent over-fitting?
 
@@ -678,16 +744,22 @@ The correct outputs aren't known the goal is to discover a mapping from states t
 
 #### How does the Back-Propagation algorithm work?
 
-
+1. Inject an entry
+2. Compute the intermediate h
+3. Compute the output o
+4. Compute the error output
+5. Adjust Z on basis of the error
+6. Compute error on hidden layer
+7. Adjust W on the basis of this error
 
 #### What are the main advantages of Neuro-evolution?
 
-Large/continuos state and output spaces are easier to handle than with classical training algorithms
+Large/continuous state and output spaces are easier to handle than with classical training algorithms
 
 #### How can genotype encode in Neuro-evolution?
 
 1. **Weights**, when we have a pre defined network topology, fixed length genotype, replace the backpropagation entirely
-2. **Topology**, variable length genotype encodes teh presence and type of neurons and their connectivity, keeps the backpropagation
+2. **Topology**, variable length genotype encodes the presence and type of neurons and their connectivity, keeps the backpropagation
 3. **Topology and Weights**
 4. **Learning rules**, change how the weights are updated
 
@@ -699,7 +771,7 @@ Large/continuos state and output spaces are easier to handle than with classical
 
 #### How does the Enforced Sub-Population (ESP) Algorithm work?
 
-*h* sub-populations of *n* neurons, foreach fitness evalutaion one member of ech sub-pop is chosen to be in the network, the fitness of each neuron is the average across the network that it was part of
+*h* sub-populations of *n* neurons, for each fitness evaluation one member of each sub-pop is chosen to be in the network, the fitness of each neuron is the average across the network that it was part of
 
 * Each hidden neuron is in a separate subpopulation 
   * One neuron from each sub-pop is active at a given time 
@@ -905,29 +977,95 @@ Simple (reciprocal) and Altruistic. Simple consist if the helping gets an advant
 
 #### What are the main applications of Genetic Programming?
 
+* Robotics
+* Biology
+* Quantum Computing
+* Circuit design
+* Automatic discovery of physics laws
+
 #### What are the main strength and weakness of Genetic Programming?
+
+* **Stregth**: produces human readablem programs and allows reuse of subprograms
+* **Weaknesses**: needs large population, slow to converge, tends to produce solutions too complex
 
 #### Why does GP use trees for encoding solutions?
 
+Because other types of encoding would be limiting
+
 #### How can you encode a Boolean expression with a tree?
+
+terminals are variables and functions are AND OR NOT...
 
 #### How can you encode an arithmetic expression with a tree?
 
+terminals are numbers or variables, functions are operations or other functions
+
 #### How can you encode a computer program with a tree?
+
+variables as terminal and comparisons/functions are in the function set
 
 #### What kind of fitness functions can be used in Genetic Programming?
 
+Fitness functions are problem dependent:
+
+* booleans: number of correct predictions
+* Arithmetic: sum of squared errors
+* Programs: number of correct generated outputs
+
+Fitness functions may also penalise big trees and ivalid expressions
+
 #### How do the full, grow and ramped half-and-half initialization methods work?
+
+These methods build the initial population. 
+
+* Initial trees are randomly generated within a maximum depth. 
+* for each individual a root is randomly selected from the function set
+* Then one of those
+  1. Full method (each branch has depth Dmax)
+     1. nodes at depth d<Dmax are functions
+     2. nodes at depth d=Dmax are terminals
+  2. Grow method (each branch has maximum depth Dmax but can be less)
+     1. nodes at depth d<Dmax are functions or terminals
+     2. nodes at depth d=Dmax are only terminals
+  3. Ramped Half-and-half method
+     1. 50% of individuals use **full** and 50% use **grow**
 
 #### How does parent ad survivor selection work in Genetic Programming?
 
+* Classic
+  * Parent: fitness proportionate
+  * Survivor: very large populations with no survival of parents
+* Modern
+  * parent: over-selection:
+    * rank population by fitness and divide in 2 groups
+    * group 1 best x% group2 best (100-x)%
+  * survivor: smaller populations with elitism
+
 #### How is it possible to apply crossover on trees?
+
+from each tree a subtree is substituted with a subtree from another individual
 
 #### What kinds of mutation can be applied on trees?
 
+* function node
+* terminal node
+* growth
+* truncation
+* swapping
+* gaussian
+
 #### What is bloat in Genetic Programming?
 
+It is the equivalent of overfitting, but by increasing the size of the solution over time to better fit the data.
+
 #### What are the main countermeasures to prevent bloat?
+
+* Limit the size of the trees in the inital population
+* Prohibit the mutation and crossover operators that would generate trees that are too big 
+* introduce check and repair mechanism in mutation/crossover
+* pruning
+* penlize fitness of large trees
+* ad-hoc operators
 
 ## 12 Applications & Recent Trends
 
