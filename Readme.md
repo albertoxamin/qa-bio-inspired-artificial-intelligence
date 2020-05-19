@@ -1071,32 +1071,103 @@ It is the equivalent of overfitting, but by increasing the size of the solution 
 
 #### Can you describe some recent examples of applications of EAs?
 
+antenna design
+
+industrial controllers
+
+job shop scheduling
+
+drift correction in eletronic noses
+
 #### How can you use EAs to find bugs or validate systems, rather than optimizing them?
+
+The idea is to find a sequence of operations that can cause incorrect behaviour.
+
+The whole system is modeled by a unknown FSM, which is reconstructed from debug messages
+
+The fitness is the number of transitions
 
 #### What’s the difference between parameter tuning and parameter control?
 
+* **Parameter tuning**: comparing different values a priori, but this is time consuming and may lead to suboptiaml choices
+* **Parameter control**: the values are set during the actual run
+  * Dynamic strategies, predetermined time varying 
+  * adaptive strategies, that use feedback from the search process
+  * self-adaptive strategies, encode paraneters in chromosomes and rely on natural selection
+
 #### How can the different parameter setting strategies used in EAs be categorized?
+
+see question above.
 
 #### What are Memetic Algorithms and how do they work?
 
+Memetic algorithms are an extension of genetic algorithms, that use local search techniques to reduce premature convergence.
+
 #### Why is diversity important in evolution?
+
+Because most problem have more than one local optimum, but usually a finite population eventually converges only to one. Often it could be useful to identify several peaks. 
 
 #### What are the main implicit and explicit approaches for diversity preservation?
 
+* Implicit:
+  * geographical separation
+  * specification
+* Explicit:
+  * compete for resources
+  * compete with each other
+
 #### How do island models work?
+
+Run more populations (islands) in parallel. After a fixed number of generations, migrate individuals to neighbouring islands. Different operators may be used in every island.
+
+Notes:
+
+* Too frequent migrations -> all islands converge to a single solution
+* Too rare migrations -> slow convergence
+* Migrations can be done adaptively
+* Migrants depend on population size
+* it is better to migrate random individuals, that will replace random or worst in the destination
+* more islands provide better results
 
 #### How does the diffusion model work?
 
+One population with spatial structure, each individual is a point on the grid. Selection recomb and replacement are based on the local neighbourhood. Different parts of the grid explore different parts of the search space.. Good solutions diffuse across the grid over time.
+
 #### How is it possible to implement speciation in EAs?
+
+* Individuals recombined only with similar individuals
+* Some extra gene are added to the problem representation to indicate the species
+  * initially random set
+  * are subject to recombination and mutation
+  * only members with a good match are picked
+  * can be used as tag for fitness sharing
 
 #### What’s the main idea behind fitness sharing and crowding distance?
 
+* Fitness sharing restricts the number of individuals within a niche by sharing their fitness in order to allocate individuals to niches in proportion to the niche fitness
+* Crowding attempts to distribute individuals evenly amongst niches
+  * Assumption that offsprings will tend to be close to parents
+
 #### What is Interactive Evolutionary Computation and how does it work?
+
+Where is not to define an absolute fitness function, you can add a human in the loop to rank population.
 
 #### What is the main motivation behind fitness-free Evolutionary Algorithms?
 
+Objectives could kill creativity and impede ourself from seeing the bigger picture
+
 #### How does Novelty Search work?
 
+Abandons the goal of improving performance, find only different solutions.
+
+Keep an archive of most novel solutions. Maximizes novelty. Shows supremacy in robotic navigation tasks.
+
 #### How does MAP-Elites work?
+
+Discretize the sbehavioural space and keeps a grid of bins with 1 best individual in each.
+
+Parallelism because the search of a cell solutions is aided by the search in the others.
+
+Aka illuminating algorithm. illuminates the fitness potentail of each region of that space.
 
 #### How is Quality Diversity computed? 
