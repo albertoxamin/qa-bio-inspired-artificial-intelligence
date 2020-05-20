@@ -1,13 +1,42 @@
 <!DOCTYPE html>
+
+<head>
+	<style>
+		.button {
+			flex:1;
+			border: none;
+			color: white;
+			padding: 12px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 2px 2px;
+			transition-duration: 0.4s;
+			cursor: pointer;
+			background-color: white;
+			color: black;
+			border: 2px solid #4CAF50;
+		}
+
+		.button:hover {
+			background-color: #4CAF50;
+			/* Green */
+			color: white;
+		}
+	</style>
+</head>
 <textarea id="output"></textarea>
 <div style="position: fixed;
-left: 50%;
-bottom: 20px;
-transform: translate(-50%, -50%);
+display:flex;
+flex-direction:column;
+width: 96%;
+bottom: 10px;
 margin: 0 auto;">
-<button onclick="prev()">Previous</button>
-<button onclick="randomQuestion()">Random</button>
-<button onclick="next()">Next</button>
+	<div id="ans" class="button" onclick="showAnswer()">Show answer</div>
+	<div class="button" onclick="prev()">Previous</div>
+	<div class="button" onclick="randomQuestion()">Random</div>
+	<div class="button" onclick="next()">Next</div>
 </div>
 <script>window.texme = { style: 'plain', renderOnLoad: false }</script>
 <script src="https://cdn.jsdelivr.net/npm/texme@0.7.0"></script>
@@ -21,18 +50,27 @@ margin: 0 auto;">
 		window.location = location.href.split('?')[0] + '?' + getRandomInt(questions.length);
 	}
 	function next() {
-		window.location = location.href.split('?')[0] + '?' + (parseInt(window.location.href.split('?')[1])+1);
+		window.location = location.href.split('?')[0] + '?' + (parseInt(window.location.href.split('?')[1]) + 1);
 	}
 	function prev() {
-		window.location = location.href.split('?')[0] + '?' +(parseInt(window.location.href.split('?')[1])-1);
+		window.location = location.href.split('?')[0] + '?' + (parseInt(window.location.href.split('?')[1]) - 1);
+	}
+	function showAnswer() {
+		if (window.location.href.split('?').length == 2)
+			window.location += '?ans';
 	}
 	fetch('Readme.md')
 		.then(response => response.text())
 		.then(text => {
 			questions = text.split('####');
-			if (window.location.href.indexOf('?') !== -1) {
+			if (window.location.href.split('?').length > 1) {
 				var hash = window.location.href.split('?')[1];
-				output.textContent = "# " + questions[hash];
+				if (window.location.href.split('?').length == 2)
+					output.textContent = "# " + questions[hash].split(/[\r\n]/)[0]
+				else{
+					output.textContent = "# " + questions[hash].split('#')[0];
+					document.querySelector('#ans').style.display = "none";
+				}
 				texme.renderPage();
 			} else {
 				window.location.href += '?' + getRandomInt(questions.length);
