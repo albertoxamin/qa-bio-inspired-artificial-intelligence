@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<textarea id="output"></textarea>
+<div style="position: fixed;
+left: 50%;
+bottom: 20px;
+transform: translate(-50%, -50%);
+margin: 0 auto;">
+<button onclick="prev()">Previous</button>
+<button onclick="randomQuestion()">Random</button>
+<button onclick="next()">Next</button>
+</div>
+<script>window.texme = { style: 'plain', renderOnLoad: false }</script>
+<script src="https://cdn.jsdelivr.net/npm/texme@0.7.0"></script>
+<script>
+	var output = document.getElementById("output");
+	var questions;
+	function getRandomInt(max) {
+		return Math.floor(Math.random() * Math.floor(max));
+	}
+	function randomQuestion() {
+		window.location = location.href.split('?')[0] + '?' + getRandomInt(questions.length);
+	}
+	function next() {
+		window.location = location.href.split('?')[0] + '?' + (parseInt(window.location.href.split('?')[1])+1);
+	}
+	function prev() {
+		window.location = location.href.split('?')[0] + '?' +(parseInt(window.location.href.split('?')[1])-1);
+	}
+	fetch('Readme.md')
+		.then(response => response.text())
+		.then(text => {
+			questions = text.split('####');
+			if (window.location.href.indexOf('?') !== -1) {
+				var hash = window.location.href.split('?')[1];
+				output.textContent = "# " + questions[hash];
+				texme.renderPage();
+			} else {
+				window.location.href += '?' + getRandomInt(questions.length);
+			}
+		})
+</script>
