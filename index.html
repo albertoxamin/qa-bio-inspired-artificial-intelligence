@@ -2,10 +2,24 @@
 
 <head>
 	<style>
+		.buttonHolder {
+			display:flex;
+			flex-direction:row;
+			padding: 8px;
+			bottom: 10px;
+			position: absolute;
+			left: 0;
+			right: 0;
+		}
+		/* @media only screen and (max-width: 600px) { */
+			.buttonHolder {
+				flex-direction: column;
+			}
+		/* } */
 		.button {
 			flex:1;
+			flex-grow: 1;
 			border: none;
-			color: white;
 			padding: 12px 32px;
 			text-align: center;
 			text-decoration: none;
@@ -15,36 +29,45 @@
 			transition-duration: 0.4s;
 			cursor: pointer;
 			background-color: white;
-			color: black;
-			border: 2px solid #4CAF50;
+			color: #333;
+			border: 2px solid #333;
 		}
 
 		.button:hover {
-			background-color: #4CAF50;
+			background-color: #333;
 			/* Green */
 			color: white;
+		}
+
+		.navigation {
+			display: flex;
+			flex-direction: row;
+		}
+
+		#questionNumber {
+			position: absolute;
+			top: -10px;
+			right: 10px;
 		}
 	</style>
 </head>
 <textarea id="output"></textarea>
-<div style="position: fixed;
-display:flex;
-flex-direction:column;
-width: 96%;
-bottom: 10px;
-margin: 0 auto;">
+<div class="buttonHolder">
 	<div id="ans" class="button" onclick="showAnswer()">Show answer</div>
-	<div class="button" onclick="prev()">Previous</div>
-	<div class="button" onclick="randomQuestion()">Random</div>
-	<div class="button" onclick="next()">Next</div>
+	<div class="navigation">
+		<div class="button" onclick="prev()">Previous</div>
+		<div class="button" onclick="randomQuestion()">Random</div>
+		<div class="button" onclick="next()">Next</div>
+	</div>
 </div>
+<h2 id="questionNumber"></h2>
 <script>window.texme = { style: 'plain', renderOnLoad: false }</script>
 <script src="https://cdn.jsdelivr.net/npm/texme@0.7.0"></script>
 <script>
 	var output = document.getElementById("output");
 	var questions;
 	function getRandomInt(max) {
-		return Math.floor(Math.random() * Math.floor(max));
+		return 1 + Math.floor(Math.random() * Math.floor(max-1));
 	}
 	function randomQuestion() {
 		window.location = location.href.split('?')[0] + '?' + getRandomInt(questions.length);
@@ -65,6 +88,7 @@ margin: 0 auto;">
 			questions = text.split('####');
 			if (window.location.href.split('?').length > 1) {
 				var hash = window.location.href.split('?')[1];
+				document.querySelector('#questionNumber').textContent = (parseInt(hash)+1) + '/' + questions.length;
 				if (window.location.href.split('?').length == 2)
 					output.textContent = "# " + questions[hash].split(/[\r\n]/)[0]
 				else{
