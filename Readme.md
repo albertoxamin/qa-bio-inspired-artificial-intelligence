@@ -389,6 +389,7 @@ It is used as a diversity preservation mechanism
 #### What kind of constraints can an optimization problem have?
 
 **Hard-constraints** which set conditions that are requred to be satisfied and **soft-constraints** which have some variables values that are penalised in the objective function.
+
 #### What does it mean for a solution to be infeasible?
 
 That some hard-constraints are not satisfied.
@@ -414,10 +415,21 @@ It has 3 main components:
 
 #### How does stochastic ranking work?
 
-It consists of multi-membered Evolution strategies that use a penalty function and a selection based on a ranking process. It tries to balance the influence of the objective function and the penalty function when assigning fitness to a solution. It doesn't requre the definition of a penalty factor
+It consists of multi-membered Evolution strategies that use a penalty function and a selection based on a ranking process. It tries to balance the influence of the objective function and the penalty function when assigning fitness to a solution. It doesn't requre the definition of a penalty factor.
 
 #### How does constraint domination (Pareto ranking) work?
+
 #### How can the notion of Pareto-dominance be adapted to problems with constraints?
+
+* Single objective (comparison of two solution):
+  * both are feasible -> choose the solution with higher fitness
+  * One is feasible, the other not -> choose the feasible
+  * Both infeasible -> choose the one with smaller overall contraint violation
+* Multi objective (a solution *i* constrained-dominate solution *j* if any of the below)
+  * *i* is feasible and *j* not
+  * *i* and *j* infeasible, but *i* has smaller constraints violations
+  * Solution *i* and *j* are both feasible, and *i* pareto-dominates *j*
+
 #### What’s the rationale behind repair mechanisms?
 
 It is an approach to turn unfeasible solutoins into feasible ones.
