@@ -455,17 +455,17 @@ A flock of birds that wants to find the area with the highest concentration of f
 
 #### What are the three strategies adopted by birds in a flock?
 
-1. Brave: keep flying in the same direction
-2. Conservative: fly back towards the best position
-3. Swarm: move towards the best neighbor
+1. **Brave**: keep flying in the same direction
+2. **Conservative**: fly back towards the best position
+3. **Swarm**: move towards the best neighbor
 
 #### How can a “particle” be defined and what kind of information does it have?
 
-A particle can be defined as position, velocity and performance and it has perception on the performance of neighbors, the best particle among its neighbors and its position, its best position.
+A particle can be defined as **position**, **velocity** and **performance** and it has perception on the **performance of neighbors**, the best particle among its **neighbors and its position**, its **best position**.
 
 #### What are the main neighborhood levels and social structures that can be used in PSO?
 
-Global neighborhood, distance based neighborood, list based neighborhood, ring, star, von-neumann,pyramid, clusters, wheel...
+**Global** neighborhood, **distance** based neighborood, **list** based neighborhood, ring, star, von-neumann,pyramid, clusters, wheel...
 
 #### What’s the idea behind growing neighborhoods?
 
@@ -474,16 +474,16 @@ Start with a ring topology with least connectivity, then grow towards a star top
 #### What are the main steps of (standard) Particle Swarm Optimization?
 
 * Each particle is initialized with random position and velocity
-* At each step, each particle updates first the velocity: $$v'=w*v+\phi_1U_1\cdot(y-x)+\phi_2U_2\cdot(z-x)$$, where **x** is the current position and **v** the current velocity. **y** and **z** are the personal and social best position. **w** is inertia $$\phi_1$$ and $$\phi_2$$ are the cognitive and social coefficients. U1 and U2 are uniform random numbers
-* Then each particles updates its position: $x'=x+v'$
-* In case of improvement update y and z
-* Do all the above until a stopping criteria is met.
+* At each step, each particle updates **first the velocity:** $$v'=w*v+\phi_1U_1\cdot(y-x)+\phi_2U_2\cdot(z-x)$$, where **x** is the current position and **v** the current velocity. **y** and **z** are the personal and social best position. **w** is inertia $$\phi_1$$ and $$\phi_2$$ are the cognitive and social coefficients. U1 and U2 are uniform random numbers
+* **Then** each particles updates **its position**: $x'=x+v'$
+* *If improvement* **update** personal **best** and social/global best, y and z respectively.
+* **Repeat** all the above until a stopping criteria is met.
 
 #### What are the velocity component and velocity models in PSO?
 
 **Components:**
 
-* Inertia velocity: the momentum
+* Inertia velocity: the momentum, prevents drastic changes.
 * Cognitive velocity: the nostalgia
 * Social velocity: the envy
 
@@ -507,31 +507,37 @@ Start with a ring topology with least connectivity, then grow towards a star top
 
 #### What are the similarities and differences between EAs and PSO?
 
-* in PSO we have the equivalent of two populations instead of one, because we have personal best solutions and the current positions
-* PSO can be see as a population based algorithm where the particle position evolve over time
+* in PSO we have the equivalent of **two populations** instead of one, because we have *personal best* solutions and the *current positions*
+* PSO can be see as a **population based algorithm** where the particle position evolve over time
 * The main difference is in the logic related to the selection:
-  * EAs: fitness based and take into account the entire population
-  * PSO: considers the solution before and after the perturbations, one to one spawning
+  * **EAs**: **fitness based** and take into account the entire population
+  * **PSO**: considers the solution **before and after the perturbations**, one to one spawning
 
 #### Can you mention some examples of dynamic inertia rules?
 
-Dynamic inertia, w changes with time. W is problem dependent. w≥1 velocity increases over time more explorarion. 0<w<1 decelerate more expoitation.
+Dynamic inertia, **w changes with time**. W is problem dependent. 
 
-* Random sampling from gaussian
+* **w≥1** velocity increases over time more **explorarion**. 
+
+* **0<w<1** decelerate = more **expoitation**.
+
+* W can be random sampled from gaussian dist.
 
 #### What is velocity clamping and why is it needed?
 
-In velocity clamping, a Vmax is defined and has the effect of controlling the global exploration of particles, it doesn't confine positions, but step sizes.
+In velocity clamping, a Vmax is defined and has the effect of controlling the global exploration of particles, it doesn't **confine** positions, but step sizes.
 
 It is also possible to adaptively change Vmax if the global best doesn't improve over a cartain number of iterations. 
 
+It is needed because **the velocity** of the particles **tends to increase quickly**, thus may lead to skipping some good solutions.
+
 #### What is the main idea of Multi-Start PSO?
 
-To increase diversity it continually injects randomness in the particles positions, however may also lead to neer reaching equilibrium.
+To increase diversity it continually **injects randomness** in the particles positions, however may also lead to never reaching equilibrium.
 
 #### What’s the main idea of Comprehensive Learning Particle Swarm Optimization?
 
-A more efficient version of PSO.
+A **more efficient** version of PSO.
 
 Changes to the perturabtion logic 
 
@@ -543,28 +549,28 @@ v_i^{k+1}=w v_i^k + \phi U\big(x_{lb-f}^k-x_i^k\big)
 
 The **functional local best** is a solution composed of design variables taken from multiple particle personal bests selected according to this:
 
-* For each j-th design var, a random number is generated and compare with a threshold
-  * if it's higher, then it's copied from the personal best of the i-th particle
-  * If it's lower, then two particles (≠i) are randomly selected from the swarm and the best of the two is copied
+* For each *j*-th design var, a random number is generated and compare with a threshold
+  * if it's higher, then it's copied from the personal best of the *i*-th particle
+  * If it's lower, then two particles (≠*i*) are randomly selected from the swarm and the best of the two is copied
 
 #### What’s the main idea of Cooperatively Coevolving Particle Swarms?
 
-Randomly divide the proble into n separate sub-problems, doesn't use velocity update but samples solutions from different distributions.
+Randomly **divide** the problem into **n** separate sub-problems, doesn't use velocity update but samples solutions from different distributions.
 
 Advantages:
 
-* Instead of solving one large dimensional problem, several smaller problems are solved.
-* Fitness is evaluated after each part of the context vector is updated, allowing for a finer-grained search.
+* Instead of solving one large dimensional problem, **several smaller problems are solved**.
+* Fitness is evaluated after each part of the context vector is updated, allowing for a **finer-grained search**.
 
 #### Can you mention some hybrid variants of PSO?
 
 
 
-## 7 Swarm Intelligence II 
+## 7 Swarm Intelligence II
 
 #### What is stigmergy?
 
-Agents can communicate through changes in the enviroment.
+The communication of individuals through changing in the enviroment.
 
 #### How is stigmergy used by ants?
 
