@@ -581,13 +581,20 @@ Ants leave a pheromone trail, ants follow the path with the highest pheromone co
 Assumes an optimization problem represented as a graph.
 We build solutions at runtime.
 
-There are two rules, the transition rule and the pheromone update rule.
+There are **two** rules:
+
+* the **transition** rule 
+* the **pheromone update** rule.
 
 When an ant steps on a node leaves pheromones that evaporate over time.
 
+It has a constructive aspect to the solution, and this is different from the other metaheuristics.
+
+When an ant completes a solution, it **lays pheromone on its path**. The amount of pheromone is **divided by the length of the path**. So edges that belong to **shorter paths have higer pheromone**.
+
 #### What kind of problems can Ant Colony Optimization solve? Why?
 
-  Combinatorial problems over networks and any TSP problem
+  Combinatorial problems over networks and any problem that can be described as a TSP, logistics problems.
 
 #### How does the transition rule used in ACO work?
 
@@ -597,41 +604,53 @@ It is used to encourage the choice of edges with high pheromone levels and short
 
 ɑ decides how much the ants will be looking for pheromones, β defines how important is the distance of the nodes.
 
+*alpha=*👃 
+
+*beta*=distance
+
 #### How does the classic pheromone update rule used in ACO work?
 
-The pheromone on an edge linearly decreases with time, but is increased by the transition of all ants on that edge.
+The pheromone on an edge linearly decreases with time, but is increased by the transition of all ants on that edge rescaled by the length of each ant's path.
 
 #### How do the local/global pheromone update rules used in ACO work?
 
-Local: The pheromone level of each edge visited by an ant is decreased by a fraction of its current level and increased by a fraction of the initial level.
+**Local**: The pheromone level of each edge visited by an ant is decreased by a fraction $(1-\rho)$ of its current level and increased by a fraction $\rho$ of the initial level.
 
-Global: Whel all ants have completed their paths, the length of the shortest path is found and only the pheromone levels of the shortest path are updated.
+$\tau_{ij}(t+1)=(1-\rho)\cdot\tau_{ij}(t)+\rho\cdot\tau_{ij}(0)$
+
+**Global**: Whel all ants have completed their paths, the length $L$ of the shortest path is found and **only the pheromone levels of the shortest path are updated**.
+
+$\tau_{ij}(t+1)=(1-\rho)\cdot\tau_{ij}(t)+\frac{\rho}{L}$
 
 #### How can you apply Ant Colony Optimization for shortest-path problems and TSP?
 
 * Distribute m ants on random nodes
-* Initial pheromone levels are equal for all edges and inversely proportional to the number of nodes times the estimated length of the optimal path.
+* Initial pheromone levels are equal for all edges and inversely proportional to the number of nodes times the estimated length of the optimal path. $\tau(0)=\frac{1}{n\cdot L^*}$
 
 #### Can you mention some of the main variants of ACO?
 
-Ant Colony Systems (ACS), Max-Min AS (MMAS), Elitist Pheromone Updates, Fast Ant System (FANT), Antabu, AS-Rank
+* Ant Colony Systems (ACS): Has stronger explotiation, only the best ants can update the pheromone.
+* Max-Min AS (MMAS): Only best ants can update the pheromone, with max and min values. More explorative.
+* Elitist Pheromone Updates: Best ants add pheromone proportional to path quality
+* Fast Ant System (FANT): only one ant, $\beta=0$, no evaporation.
+* Antabu: local search based on tabu search.
+* AS-Rank: only best ants update and elitist pheromone update§.
 
 #### What are the main steps of Continuous Ant Colony Optimization?
 
 CACO performs a bi-level search: local (exploit good regions) and global (explore bad regions) 
 
-```pseudocode
-Create n_r regisons and set tau_i(0)=1, i=1,...,n_r
-repeat
-	Evaluate fitness, f(x_i), of each region
-	Sort regions in descending order of fitness
-	send 90% of n_g global ants for mutation
-	send 10% of n_g global ants for trail diffusion
-	update pheromone and age of n_g weak regions
-	do loacl search to exploit good region
-until stopping condition is true
-return region x_i with the best fitness as solution
-```
+* Initialization
+  * Search is performed by $N_k$ ants: $N_l$ for local search and $N_g$ for global search
+  * create $N_r$ regions
+    * each region is a point in the continuous space
+  * Set pheromone of each region to 1
+* Local search
+  * each ant of the $N_l$ local ants selects a region with a probability and moves a distance defined by the user.
+* Global search
+* Region age and pheromone update
+  * the age of a reagion idicates the weakness of a solution
+  * if a better fitness is not found the age is increased, otherwise region is replaced with 0 age
 
 #### What are the two main methods for Multi-Objective Ant Colony Optimization?
 
