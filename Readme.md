@@ -880,7 +880,7 @@ By looking at the historical marking and the input and output nodes.
 
 #### How does speciation work in NEAT and why is it used?
 
-NEATS **divides** the **population** into **species**, organism are grouped by similarity
+NEAT **divides** the **population** into **species**, organism are grouped by similarity
 
 **Keeps incompatible networks apart**, mating only happens within a specie
 
@@ -906,10 +906,10 @@ Hyperneat uses CPPNs to encode neural networks and by compactly encoding connect
 
 To design multi-agent robotic systems characterized by:
 
-* robustness
-* scalability
-* Versatility/flexibility 
-* low cost
+* **robustness**
+* **scalability**
+* Versatility/**flexibility** 
+* **low cost**
 
 #### Can you mention some examples of tasks solved by Swarm Intelligence in nature?
 
@@ -921,11 +921,18 @@ Coordinated exploration, transportation and clustering, physical cooperation, re
 
 #### What are reconfigurable robots and what are their main kinds?
 
-Modular robots, composed of several components, which can be re-organized to create morphologies suitable for different tasks. There are four types of reconfigurable robots: Chan-type, Lattice-Type, Hybrid type (chain+lattice), Other types
+Modular **robots**, **composed of several components**, which **can be re-organized to create morphologies suitable for different tasks**.
+
+There are four main types of reconfigurable robots: 
+
+* Chan-type
+* Lattice-Type
+* Hybrid type (chain+lattice)
+* Other types
 
 #### What are the motivations behind Evolutionary Robotics?
 
-Since it's difficult to design autonomous systems using a top-down engineering process it's better to let the engineer define the control components and the selection criteria, and let the artificial evolution  discover the most suitable combinations while the robot interacts with the enviroment.
+Since it's difficult to design autonomous systems using a top-down engineering process it's better to **let the engineer define the control components and the selection criteria**, and **let the artificial evolution  discover the most suitable combinations** while the robot interacts with the enviroment.
 
 Can be used as a synthetic approach to the study of mechanism of adaptive behaviour.
 
@@ -939,7 +946,7 @@ Fitness=V\*(1-s)
 
 #### How is it possible to design a fitness function for evolving autonomous car driving?
 
-The fitness is the percentage of covered distance d in r races on m circuits.
+The fitness is the percentage of covered distance $D$ in $R$ races on $M$ circuits.
 
 $$F=\frac{1}{R*M}\sum^R\sum^M D_{r,m}$$
 
@@ -955,9 +962,16 @@ Competitive co-evolution is a situation where 2 different species co-evolve agai
 
 The fitness of each species depends on the fitness of the opponenet species.
 
-A continously changing fitness landscape.
+A continously **changing fitness landscape**.
 
 #### What is the difference between formal and computational models of competitive co-evolution?
+
+* **Formal** models
+  * describe the **variation in population size** of two competing species.
+  * assume that the **behaviour** remains **constant** across generations.
+* **Computational** models
+  * strategy recycling => stagnation
+  * dynamic fitness landscape
 
 #### How can you apply competitive co-evolution to evolve sorting algorithms?
 
@@ -977,23 +991,29 @@ The fitness function is no longer an indicator of progress.
 
 #### Does competitive co-evolution lead to progress?
 
+Yes, but it cannot be measured by only looking at the fitness trends.
 
+If can be measured by testing individuals against opponents of previous generations.
 
 #### How can you measure co-evolutionary progress with CIAO graphs?
 
 **C**urrent **I**ndividual vs. **A**ncestral **O**pponent across generations. Ideal continuous progress would be indicated by lower diagonal portion in black and upper diagonal portion in white.
 
+![image-20200602190811008](image-20200602190811008.png)
+
 #### How can you measure co-evolutionary progress with Master Tournaments?
 
 Plot the average outcome of tournaments of the current individual against all previous best opponents. Ideal continuous progress would be indicated by continuous growth. 
 
+![image-20200602191201132](image-20200602191201132.png)
+
 #### What is the Hall of Fame and why is it useful?
 
-Tries to introduce generation memory, but at each generation we test each new individual against all best opponents obtained so far (it is sufficient to test only against a limited sample frandomly extracted from the hall of fame).
+Tries to introduce generation memory, but at each generation we test each new individual against all best opponents obtained so far (it is sufficient to test only against a limited sample randomly extracted from the hall of fame).
 
 #### How is it possible to evolve a robotic prey-predator scenario?
 
-
+With the use of hall of fame.
 
 #### What’s the difference between inter-species and intra-species cooperation?
 
@@ -1003,19 +1023,39 @@ Tries to introduce generation memory, but at each generation we test each new in
 
 #### What are the two main kinds of cooperation?
 
-Simple (reciprocal) and Altruistic. Simple consist if the helping gets an advantage, this is easy to implement. Altruistic cooperation is harder to evolve.
+* Simple (**reciprocal**) cooperation consist if the helping gets an advantage, this is easy to implement. 
+
+* **Altruistic** cooperation is harder to evolve.
 
 #### Can you mention some examples of cooperation observed in nature?
 
+Ants that build bridges. Bees that give food to larvae...
+
 #### Why is it difficult to explain the evolution of altruistic cooperation?
+
+Because the individual usually takes a loss or even dies, which will reduce its fittness.
 
 #### What is the main idea of kin selection? What is genetic relatedness?
 
+Kin selection is the evolutionary strategy that **favours the reproductive success of an organism's relatives**, even at a cost to the organism's own survival and reproduction.
+
+The coefficient of relationship is a measure of the degree of consanguinity between two individuals. 
+
 #### What is group selection and how does it differ from kin selection?
+
+**Group selection** is a proposed mechanism of evolution in which natural selection acts at the level of the group, instead of at the more conventional level of the individual.
 
 #### What kind of computational models (team composition and selection) can be used?
 
+* Homogeneous 
+* Heterogeneous 
+* Team selection
+* Individual Selection
+
 #### What are some possible applications of cooperative co-evolution?
+
+* Robots playing team sports
+* Transporation of heavy objects
 
 #### Can you describe the robotic foraging task experiments and their main results?
 
