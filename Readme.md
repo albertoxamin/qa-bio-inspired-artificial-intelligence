@@ -700,23 +700,28 @@ The sharing mechanism is applied before the pheromone updates
 
 #### What are the advantages of nervous systems?
 
-Selective transmissions of signals across distant areas which results in more complex bodies
+**Selective transmissions** of signals across distant areas which results in more complex bodies
 
-Complex adaptation that results in survival inside changing environments 
+**Complex adaptation** that results in survival even in changing environments.
 
 #### What are the two main neuron communication models?
 
-Spiking neurons and McCulloch-Pitts 
+* Spiking neurons 
+  * use firing-time
+  * inspired by neuroscience
+* McCulloch-Pitts 
+  * use firing rate
+  * the common neural network 
 
 #### What is firing time and firing rate?
 
-Firing time is used in spiking neurons, firing rate (signal strength) is the base of  McCulloch
+Firing time is used in spiking neurons, firing rate (signal strength) is the base of McCulloch
 
 #### What are main elements of the McCulloch-Pitts model?
 
-* A neural network is a black-box system that communicates with an external environment through input units and output units. All other elements are called internal or hidden units. Units are usually referred to also as nodes. 
+* A neural network is a **black-box system** that communicates with an external environment through **input** units and **output** units. All other elements are called internal or **hidden** units. Units are usually referred to also as **nodes**. 
 
-* Nodes are linked by connections
+* Nodes are linked by **connections**
 
 * A connection is characterized by a weight that multiplies the input
 
@@ -724,26 +729,26 @@ Firing time is used in spiking neurons, firing rate (signal strength) is the bas
 
 #### Can you mention some types of activation functions?
 
-Identity, step, sigmoid
+![image-20200601141055910](image-20200601141055910.png)
 
 #### What is the difference between Feed-Forward and Recurrent Neural Networks?
 
-In Feed-Forward Neural Networks (**FFNN**) information flows one way only
+In Feed-Forward Neural Networks (**FFNN**) information flows **one way only**
 
-* Perceptron: input and output nodes only, no hidden learning
-* Multi-Layer Perceptron (MLP): when there are one ore more hidden layers
+* **Perceptron**: **input and output nodes only**, no hidden layers
+* Multi-Layer Perceptron (**MLP**): when there are **one or more hidden layers**
 
-In Recurrent Neural Networks information flows both ways, "enables" the memory capability
+In Recurrent Neural Networks information **flows both ways**, "enables" the **memory capability**
 
 #### Why is linear separability important and how is it handled by Neural Networks?
 
-The separation line is defined by the synaptic weights: w1x1+w2x2-θ=0 → x2=θ/w2-w1/w2x1 
+Each node divides the input space in two regions, the separation line is defined by the synaptic weights.
 
 #### What is the difference between Single and Multi-Layer Perceptron?
 
-Single layer perceptron can solve only problems whose input/output space is linearly separable.
+**Single** layer perceptron can **solve** only problems whose input/output space is **linearly separable**.
 
-MLP can solve problems that are not linearly separable.
+**MLP** can **solve** problems that are **not linearly separable**.
 
 #### What are the main areas of applications of Artificial Neural Networks?
 
@@ -753,31 +758,35 @@ Applications: Self driving cars, network efficiency, cybersecurity, marketing, f
 
 #### What is learning in an artificial neural network?
 
-The network adjusts the weights to achieve a desired output, there are 2 types of learning supervised learning, unsupervised learning and reinforcement learning. 
+The network adjusts the weights to achieve a desired output
+
+* supervised learning
+* unsupervised learning
+* reinforcement learning
 
 #### What is supervised learning?
 
-Correct outputs are known, the goal is to minimize the error, usually with *back-propagation*
+**Correct outputs are known**, the goal is to **minimize the error**, usually with *back-propagation*
 
 #### What is unsupervised learning?
 
-The correct outputs aren't known, the goal is to find the correlations in data or compress data or feature extraction, usually with Hebbian learning
+The **correct outputs aren't known**, the goal is to **find** the **correlations** in data or compress data or **feature extraction**, usually with Hebbian learning
 
 #### What is reinforcement learning?
 
-The correct outputs aren't known the goal is to discover a mapping from states to actions
+The correct outputs aren't known the goal is to **discover a mapping from states to actions**
 
 #### What is an error function?
 
-It is a function that describes how far the classified points are from their true value.
+It is a function that describes **how far the classified points are from their true value**.
 
 #### How is possible to prevent over-fitting?
 
 1. Divide the available data into:  
-   * training set (for weight update) 
-   * validation set (for error monitoring)
+   * **training set** (for weight update) 
+   * **validation set** (for error monitoring)
 
-2. Stop training when the error on the validation set starts growing 
+2. **Stop** training when the error on the validation set starts growing 
 
 #### How does the Back-Propagation algorithm work?
 
@@ -810,22 +819,24 @@ Large/continuous state and output spaces are easier to handle than with classica
 
 *h* sub-populations of *n* neurons, for each fitness evaluation one member of each sub-pop is chosen to be in the network, the fitness of each neuron is the average across the network that it was part of
 
-* Each hidden neuron is in a separate subpopulation 
+* **Hidden neurons** are in a **separate subpopulation** 
   * One neuron from each sub-pop is active at a given time 
 
   * Selection/reproduction happens within a given sub-pop 
 
 * Populations learn compatible subtasks 
 
-  * Allows each sub-pop to specialize 
+  * Allows **each sub-pop to specialize** 
 
-* Evolution encourages diversity automatically
+* **Evolution encourages diversity** automatically
   * “Good” networks require different kinds of neurons 
 
-* Evolution discourages competing conventions
-  * Cooperative co-evolution: neurons optimized for compatible roles 
+* Evolution **discourages competing conventions**
+  * Cooperative co-evolution: **neurons optimized for compatible roles** 
 
 #### How does ESP overcome some of the problems with conventional Neuro-evolution?
+
+See previous question.
 
 #### What is CoSyNE and how does it differ from ESP?
 
@@ -833,15 +844,15 @@ Extends to synapses rather than neurons
 
 #### What are TWEANNs?
 
-Topology and Weight Evolving Artificial Neural Nets 
+Topology and Weight Evolving Artificial Neural Nets, so **algorithms that evolve the topology and weights** of a NN. So NEAT, HyperNEAT and Compressed Network Search are TWEANNs.
 
 #### What are the main challenges when creating a TWEANN algorithm?
 
-* Initial population randomization
-  * non functional networks
-  * Unnecessarily high-dimensional search space
-* competing conventions problem worsen when evolving topologies
-* loss of innovative structure
+* **Initial population** randomization
+  * **Non functional networks**
+  * Unnecessarily **high-dimensional search space**
+* **Competing conventions** problem worsen when **evolving topologies**
+* **Loss of innovative structure**
   * more complex networks can't compete in the short run
   * need to protect innovation
 
@@ -851,7 +862,7 @@ Nodes and connections
 
 Nodes can be either sensors, output or hidden
 
-Connections have input, output, weight, status (enabled/disabled), innov
+Connections have input, output, weight, status (enabled/disabled), innovation number
 
 #### How are networks encoded in NEAT?
 
@@ -861,17 +872,19 @@ In the Phenotype
 
 Allows matching networks of different topologies, and solves the problems that rises where same genes are in different positions or different genes that have the same position.
 
-This by marking the gene with an historical mark
+This by marking the gene with an historical mark.
 
 #### How does crossover work in NEAT?
 
+By looking at the historical marking and the input and output nodes.
+
 #### How does speciation work in NEAT and why is it used?
 
-NEATS divides the population into species, organism are grouped by similarity
+NEATS **divides** the **population** into **species**, organism are grouped by similarity
 
-Keeps incompatible networks apart, mating only happens within a specie
+**Keeps incompatible networks apart**, mating only happens within a specie
 
-Allows the optimization without having to compete with all the other networks
+Allows the **optimization without having to compete with all the other networks**
 
 Fitness sharing preserves diversity
 
@@ -883,7 +896,7 @@ A CPPN is similar to a neural network, but acts as indirect encoding for other o
 
 #### What is HyperNEAT? How does it differ from NEAT?
 
-Hyperneat uses CPPNs to encode neural networks and by compactly encoding connectivity patterns, HyperNEAT has been demonstrated to successfully evolve neural networks of several million connections 
+Hyperneat uses CPPNs to encode neural networks and by compactly encoding connectivity patterns, HyperNEAT has been demonstrated to successfully evolve neural networks of several million connections, that enable for example robot locomotion.
 
 #### What’s the main idea of Compressed Network Search?
 
