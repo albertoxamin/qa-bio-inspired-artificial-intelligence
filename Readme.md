@@ -1075,8 +1075,13 @@ The coefficient of relationship is a measure of the degree of consanguinity betw
 
 #### What are the main strength and weakness of Genetic Programming?
 
-* **Stregth**: produces human readablem programs and allows reuse of subprograms
-* **Weaknesses**: needs large population, slow to converge, tends to produce solutions too complex
+* **Stregth**:
+  * produces human readable programs
+  * allows reuse of subprograms
+* **Weaknesses**:
+  * needs large population
+  * slow to converge
+  * tends to produce solutions too complex
 
 #### Why does GP use trees for encoding solutions?
 
@@ -1084,15 +1089,15 @@ Because other types of encoding would be limiting
 
 #### How can you encode a Boolean expression with a tree?
 
-terminals are variables and functions are AND OR NOT...
+Terminals are variables and functions are AND OR NOT...
 
 #### How can you encode an arithmetic expression with a tree?
 
-terminals are numbers or variables, functions are operations or other functions
+Terminals are numbers or variables, functions are operations or other functions
 
 #### How can you encode a computer program with a tree?
 
-variables as terminal and comparisons/functions are in the function set
+Variables as terminal set and comparisons/functions are in the function set
 
 #### What kind of fitness functions can be used in Genetic Programming?
 
