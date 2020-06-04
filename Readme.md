@@ -1166,13 +1166,23 @@ It is the equivalent of overfitting, but by increasing the size of the solution 
 
 #### Can you describe some recent examples of applications of EAs?
 
-antenna design
+* antenna design
+  * using GP
 
-industrial controllers
+* industrial controllers
 
-job shop scheduling
+* job shop scheduling
+  * GA
 
-drift correction in eletronic noses
+* drift correction in eletronic noses
+  * ES
+* Evolutionary eletronics
+* Software validation
+  * find sequences of operations that causes incorrect behaviour 
+  * model the entire system as a FSM
+* Network protocol verification
+* Security assessment and attack simulations
+* Co-evolution of sensor systems
 
 #### How can you use EAs to find bugs or validate systems, rather than optimizing them?
 
@@ -1266,3 +1276,5 @@ Parallelism because the search of a cell solutions is aided by the search in the
 Aka illuminating algorithm. illuminates the fitness potentail of each region of that space.
 
 #### How is Quality Diversity computed? 
+
+Total fitness across all filled grid bins
