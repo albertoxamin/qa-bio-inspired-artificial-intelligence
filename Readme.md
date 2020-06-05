@@ -295,12 +295,12 @@ Population size, Scale Factor (aka differential weight), Crossover probability
 
 #### What’s the difference between exponential and binomial crossover used in DE?
 
-* binomial follows a binomial distribution, avg of swapped genes = 1 + CR*n
-* exponential follows a geometric dist. avg = (1-CR^n)/(1-CR)
+* binomial follows a binomial distribution, avg of swapped genes = $1 + CR\cdot n$
+* exponential follows a geometric dist. avg = $\frac{1-CR^n}{1-CR}$
 
 #### Why and how does Differential Evolution work?
 
-At the beginning, the solutions are spread out, with a large **S**cale **F**actor allows for large search moments. (EXPLORATIVE BEGINNING)
+At the beginning, the solutions are spread out, with a large **S**cale **F**actor allows for large search movements. (EXPLORATIVE BEGINNING)
 
 At the end of the optimization, the solutions should be focused in an area of the decision space, allowing for refinements. (EXPLOITATIVE ENDING)
 
@@ -312,7 +312,7 @@ In EDAs we don't evolve solutions, but **a single** probabilistic model of the p
 
 #### How does PBIL work?
 
-Genes are represented as real values in the range [0,1] indicating the prob. that any allele appears in that gene
+Genes are represented as real values in the range $[0,1]$ indicating the probability that any allele appears in that gene
 
 1. A population is generated from the probability vector
 2. The fitness of each member is evaluated and ranked
@@ -325,7 +325,7 @@ Genes are represented as real values in the range [0,1] indicating the prob. tha
 #### Can you mention some examples of Multi-Objective Optimization problems?
 
 Buying a car: comfort vs price
-Engineering design: lighness vs strength
+Engineering design: lightness vs strength
 
 #### What are some of the drawbacks of combining criteria into a single fitness function?
 
@@ -388,7 +388,9 @@ It is used as a diversity preservation mechanism
 
 #### What kind of constraints can an optimization problem have?
 
-**Hard-constraints** which set conditions that are requred to be satisfied and **soft-constraints** which have some variables values that are penalised in the objective function.
+**Hard-constraints** which set conditions that are required to be satisfied.
+
+**Soft-constraints** which have some variables values that are penalised in the objective function.
 
 #### What does it mean for a solution to be infeasible?
 
@@ -437,11 +439,11 @@ This can be done through greedy algorithms, random or custom herustics.
 
 #### How can repaired solutions be used?
 
-Repaired solutions can be used for firness evaluation only or to replace the corrisponding unfeasible solutions in the population (always or with some propbability).
+Repaired solutions can be used for firness evaluation only or to replace the corrisponding unfeasible solutions in the population (always or with some probability).
 
 #### What’s the main idea of the Ensemble of Constraint-Handling Techniques?
 
-To have several constraint handling techniques, each with its own popultaion and parameters. Each population produces its offspring and evaluates them. However, the offspring compete with all the offsprings from all the populations. This aims to automate the selection of the best constraint-handling technique for a certain problem (no free lunch theorem)
+To have several constraint handling techniques, each with its own population and parameters. Each population produces its offspring and evaluates them. However, the offspring compete with all the offsprings from all the populations. This aims to automate the selection of the best constraint-handling technique for a certain problem (no free lunch theorem)
 
 #### What’s the main idea of Viability Evolution?
 
@@ -469,7 +471,7 @@ A particle can be defined as **position**, **velocity** and **performance** and 
 
 #### What’s the idea behind growing neighborhoods?
 
-Start with a ring topology with least connectivity, then grow towards a star topology. Particles are added to the neighborhood according to a scaled euclidiean distance smaller than an increading radius.
+Start with a ring topology with least connectivity, then grow towards a star topology. Particles are added to the neighborhood according to a scaled euclidiean distance smaller than an increasing radius.
 
 #### What are the main steps of (standard) Particle Swarm Optimization?
 
@@ -503,7 +505,7 @@ Start with a ring topology with least connectivity, then grow towards a star top
 * ɸ1<ɸ2 better for unimodal
 * ɸ1ɸ2 better for multimodal
 * low ɸ1 and ɸ2 smoother trajectories
-* high ɸ1 and ɸ2 higher acceleration, abrupt movemnts
+* high ɸ1 and ɸ2 higher acceleration, abrupt movements
 
 #### What are the similarities and differences between EAs and PSO?
 
@@ -519,7 +521,7 @@ Dynamic inertia, **w changes with time**. W is problem dependent.
 
 * **w≥1** velocity increases over time more **explorarion**. 
 
-* **0<w<1** decelerate = more **expoitation**.
+* **0<w<1** decelerate = more **exploitation**.
 
 * W can be random sampled from gaussian dist.
 
@@ -527,7 +529,7 @@ Dynamic inertia, **w changes with time**. W is problem dependent.
 
 In velocity clamping, a Vmax is defined and has the effect of controlling the global exploration of particles, it doesn't **confine** positions, but step sizes.
 
-It is also possible to adaptively change Vmax if the global best doesn't improve over a cartain number of iterations. 
+It is also possible to adaptively change Vmax if the global best doesn't improve over a certain number of iterations. 
 
 It is needed because **the velocity** of the particles **tends to increase quickly**, thus may lead to skipping some good solutions.
 
@@ -539,7 +541,7 @@ To increase diversity it continually **injects randomness** in the particles pos
 
 A **more efficient** version of PSO.
 
-Changes to the perturabtion logic 
+Changes to the perturbation logic 
 
 ![image-20200507123154209](image-20200507123154209.png)
 
@@ -570,7 +572,7 @@ Advantages:
 
 #### What is stigmergy?
 
-The communication of individuals through changing in the enviroment.
+The communication of individuals through changing in the environment.
 
 #### How is stigmergy used by ants?
 
@@ -590,7 +592,7 @@ When an ant steps on a node leaves pheromones that evaporate over time.
 
 It has a constructive aspect to the solution, and this is different from the other metaheuristics.
 
-When an ant completes a solution, it **lays pheromone on its path**. The amount of pheromone is **divided by the length of the path**. So edges that belong to **shorter paths have higer pheromone**.
+When an ant completes a solution, it **lays pheromone on its path**. The amount of pheromone is **divided by the length of the path**. So edges that belong to **shorter paths have higher pheromone**.
 
 #### What kind of problems can Ant Colony Optimization solve? Why?
 
@@ -602,7 +604,7 @@ It is used to encourage the choice of edges with high pheromone levels and short
 
 #### What’s the influence of the transition rule’s parameters α and β?
 
-ɑ decides how much the ants will be looking for pheromones, β defines how important is the distance of the nodes.
+$\alpha$ decides how much the ants will be looking for pheromones, β defines how important is the distance of the nodes.
 
 *alpha=*👃 
 
@@ -618,23 +620,23 @@ The pheromone on an edge linearly decreases with time, but is increased by the t
 
 $\tau_{ij}(t+1)=(1-\rho)\cdot\tau_{ij}(t)+\rho\cdot\tau_{ij}(0)$
 
-**Global**: Whel all ants have completed their paths, the length $L$ of the shortest path is found and **only the pheromone levels of the shortest path are updated**.
+**Global**: When all ants have completed their paths, the length $L$ of the shortest path is found and **only the pheromone levels of the shortest path are updated**.
 
 $\tau_{ij}(t+1)=(1-\rho)\cdot\tau_{ij}(t)+\frac{\rho}{L}$
 
 #### How can you apply Ant Colony Optimization for shortest-path problems and TSP?
 
-* Distribute m ants on random nodes
+* Distribute $m$ ants on random nodes
 * Initial pheromone levels are equal for all edges and inversely proportional to the number of nodes times the estimated length of the optimal path. $\tau(0)=\frac{1}{n\cdot L^*}$
 
 #### Can you mention some of the main variants of ACO?
 
-* Ant Colony Systems (ACS): Has stronger explotiation, only the best ants can update the pheromone.
+* Ant Colony Systems (ACS): Has stronger exploitation, only the best ants can update the pheromone.
 * Max-Min AS (MMAS): Only best ants can update the pheromone, with max and min values. More explorative.
 * Elitist Pheromone Updates: Best ants add pheromone proportional to path quality
 * Fast Ant System (FANT): only one ant, $\beta=0$, no evaporation.
 * Antabu: local search based on tabu search.
-* AS-Rank: only best ants update and elitist pheromone update§.
+* AS-Rank: only best ants update and elitist pheromone update.
 
 #### What are the main steps of Continuous Ant Colony Optimization?
 
@@ -649,7 +651,7 @@ CACO performs a bi-level search: local (exploit good regions) and global (explor
   * each ant of the $N_l$ local ants selects a region with a probability and moves a distance defined by the user.
 * Global search
 * Region age and pheromone update
-  * the age of a reagion idicates the weakness of a solution
+  * the age of a region idicates the weakness of a solution
   * if a better fitness is not found the age is increased, otherwise region is replaced with 0 age
 
 #### What are the two main methods for Multi-Objective Ant Colony Optimization?
@@ -660,7 +662,7 @@ Multi-colony approach with one colony for each objective
 
 #### How does the multi-pheromone approach work?
 
-A pheromone and an herustic matrix are used fore each objective.
+A pheromone and an heuristic matrix are used fore each objective.
 
 ![image-20200507183951987](image-20200507183951987.png)
 
@@ -689,14 +691,13 @@ The sharing mechanism is applied before the pheromone updates
 * Global sharing
   * Applied after all paths have been constructed
   * Rank solutions using non dominated sorting
-    * Find all non-dom solutions
+    * Find all non-dominated solutions
     * Add them to the current front
     * Remove these individuals
     * Advance to the next front and repeat
   * $f_{ij}$ calculated as for local sharing 
 
-
-## 8 Neuro-evolution 
+## 8 Neuro-evolution
 
 #### What are the advantages of nervous systems?
 
@@ -719,7 +720,7 @@ Firing time is used in spiking neurons, firing rate (signal strength) is the bas
 
 #### What are main elements of the McCulloch-Pitts model?
 
-* A neural network is a **black-box system** that communicates with an external environment through **input** units and **output** units. All other elements are called internal or **hidden** units. Units are usually referred to also as **nodes**. 
+* A neural network is a **black-box system** that communicates with an external environment through **input** units and **output** units. All other elements are called internal or **hidden** units. Units are usually referred to **nodes**. 
 
 * Nodes are linked by **connections**
 
@@ -932,7 +933,7 @@ There are four main types of reconfigurable robots:
 
 #### What are the motivations behind Evolutionary Robotics?
 
-Since it's difficult to design autonomous systems using a top-down engineering process it's better to **let the engineer define the control components and the selection criteria**, and **let the artificial evolution  discover the most suitable combinations** while the robot interacts with the enviroment.
+Since it's difficult to design autonomous systems using a top-down engineering process it's better to **let the engineer define the control components and the selection criteria**, and **let the artificial evolution  discover the most suitable combinations** while the robot interacts with the environment.
 
 Can be used as a synthetic approach to the study of mechanism of adaptive behaviour.
 
@@ -960,9 +961,9 @@ $$F=\frac{1}{R*M}\sum^R\sum^M D_{r,m}$$
 
 Competitive co-evolution is a situation where 2 different species co-evolve against each other.
 
-The fitness of each species depends on the fitness of the opponenet species.
+The fitness of each species depends on the fitness of the opponent species.
 
-A continously **changing fitness landscape**.
+A continuously **changing fitness landscape**.
 
 #### What is the difference between formal and computational models of competitive co-evolution?
 
@@ -1055,7 +1056,7 @@ The coefficient of relationship is a measure of the degree of consanguinity betw
 #### What are some possible applications of cooperative co-evolution?
 
 * Robots playing team sports
-* Transporation of heavy objects
+* Transportation of heavy objects
 
 #### Can you describe the robotic foraging task experiments and their main results?
 
@@ -1125,7 +1126,7 @@ These methods build the initial population.
   3. Ramped Half-and-half method
      1. 50% of individuals use **full** and 50% use **grow**
 
-#### How does parent ad survivor selection work in Genetic Programming?
+#### How does parent and survivor selection work in Genetic Programming?
 
 * Classic
   * Parent: fitness proportionate
@@ -1155,11 +1156,11 @@ It is the equivalent of overfitting, but by increasing the size of the solution 
 
 #### What are the main countermeasures to prevent bloat?
 
-* Limit the size of the trees in the inital population
+* Limit the size of the trees in the initial population
 * Prohibit the mutation and crossover operators that would generate trees that are too big 
 * introduce check and repair mechanism in mutation/crossover
 * pruning
-* penlize fitness of large trees
+* penalise fitness of large trees
 * ad-hoc operators
 
 ## 12 Applications & Recent Trends
@@ -1198,7 +1199,7 @@ The fitness is the number of transitions
 * **Parameter control**: the values are set during the actual run
   * Dynamic strategies, predetermined time varying 
   * adaptive strategies, that use feedback from the search process
-  * self-adaptive strategies, encode paraneters in chromosomes and rely on natural selection
+  * self-adaptive strategies, encode parameters in chromosomes and rely on natural selection
 
 #### How can the different parameter setting strategies used in EAs be categorized?
 
@@ -1236,7 +1237,7 @@ Notes:
 
 #### How does the diffusion model work?
 
-One population with spatial structure, each individual is a point on the grid. Selection recomb and replacement are based on the local neighbourhood. Different parts of the grid explore different parts of the search space.. Good solutions diffuse across the grid over time.
+One population with spatial structure, each individual is a point on the grid. Selection recombination and replacement are based on the local neighbourhood. Different parts of the grid explore different parts of the search space.. Good solutions diffuse across the grid over time.
 
 #### How is it possible to implement speciation in EAs?
 
@@ -1269,7 +1270,7 @@ Keep an archive of most novel solutions. Maximizes novelty. Shows supremacy in r
 
 #### How does MAP-Elites work?
 
-Discretize the sbehavioural space and keeps a grid of bins with 1 best individual in each.
+Discretize the behavioural space and keeps a grid of bins with 1 best individual in each.
 
 Parallelism because the search of a cell solutions is aided by the search in the others.
 
